@@ -231,7 +231,7 @@
         <div class="logo-circle">L</div>
         <span class="logo-text">LogginSuite</span>
       </div>
-      <button class="menu-btn" onclick="alert('Menu will be added in next update!')">☰</button>
+      <button class="menu-btn" onclick="alert('Menu coming soon!')">☰</button>
     </header>
 
     <!-- Hero -->
@@ -270,66 +270,61 @@
     <span class="service-pill">Amazon</span>
   </div>
 
-  <!-- Firebase Demo Section (styled to match) -->
+  <!-- Firebase Demo Section -->
   <div class="demo-section">
-    <h3>Try Sending a Message (Firebase Demo)</h3>
+    <h3>Try Sending a Message (Live Firebase)</h3>
     <input type="text" id="messageInput" class="message-input" placeholder="Type your message...">
     <button class="send-btn" onclick="sendMessage()">Send Message</button>
     
     <div class="messages-list" id="messages"></div>
   </div>
 
-  <!-- Firebase SDK -->
+  <!-- Firebase Compat SDK (works great with your project) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
   <script>
-    // ==================== FIREBASE CONFIG ====================
-    // Replace this with your own Firebase config from console.firebase.google.com
+    // ==================== YOUR FIREBASE CONFIG ====================
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY_HERE",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "AIzaSyDc7oa9Rxai_vBGuNV-X1emXdo_ryOMj4c",
+      authDomain: "logginpanelsuite.firebaseapp.com",
+      projectId: "logginpanelsuite",
+      storageBucket: "logginpanelsuite.firebasestorage.app",
+      messagingSenderId: "291135844505",
+      appId: "1:291135844505:web:2ecf44de31f3a494630808",
+      measurementId: "G-5G5MG66LB4"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // Search function
+    // ==================== FUNCTIONS ====================
     function searchProducts() {
       const query = document.getElementById('searchInput').value.trim();
       if (query) {
-        alert("Searching for: " + query + "\n(We'll add real search later)");
+        alert("Searching for: " + query);
       } else {
         alert("Please type something to search");
       }
     }
 
-    // Trending pills
     function selectTrending(element) {
       const tag = element.textContent;
       document.getElementById('searchInput').value = tag;
-      // Optional: auto search
-      // searchProducts();
     }
 
-    // Get Started button
     function getStarted() {
       document.getElementById('messageInput').focus();
-      alert("Welcome to LogginSuite! Scroll down to try the demo.");
+      alert("Welcome to LogginSuite! Try sending a message below.");
     }
 
-    // Explore Services
     function exploreServices() {
       alert("Services page coming in the next update!");
     }
 
-    // Floating Telegram button
     function openTelegram() {
-      alert("Opening Telegram support... (We'll connect real Telegram later)");
+      alert("Telegram support will be connected soon!");
     }
 
     // ==================== FIREBASE MESSAGE FEATURE ====================
@@ -348,7 +343,7 @@
       })
       .catch(err => {
         console.error(err);
-        alert("Error sending message. Make sure Firestore is enabled in test mode.");
+        alert("Error! Make sure you enabled Firestore Database in test mode.");
       });
     }
 
@@ -370,7 +365,7 @@
         });
     }
 
-    // Load messages when page opens
+    // Load messages when page loads
     window.onload = function() {
       loadMessages();
     };
