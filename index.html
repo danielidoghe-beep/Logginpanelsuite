@@ -596,7 +596,11 @@ function googleLogin(){
 
 })
 .catch((error) => {
-    alert(error.message);
+    alert(
+        "Code: " + error.code +
+        "\nMessage: " + error.message
+    );
+    console.log(error);
 });
 
 auth.onAuthStateChanged(user => {
