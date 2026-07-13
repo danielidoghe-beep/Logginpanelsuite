@@ -10,7 +10,6 @@
       background: #0f172a;
       color: #f8fafc;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      min-height: 100vh;
     }
     .container {
       max-width: 480px;
@@ -51,215 +50,138 @@
       border: none;
       border-radius: 10px;
       color: white;
-      font-size: 22px;
-      cursor: pointer;
-    }
-    h1 {
-      font-size: 32px;
-      line-height: 1.2;
-      font-weight: 800;
-      text-align: center;
-      margin: 40px 0 15px;
-    }
-    .subtitle {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 16px;
-      margin-bottom: 40px;
-    }
-    .search-container {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-    .search-input {
-      flex: 1;
-      background: #1e2937;
-      border: 1px solid #334155;
-      border-radius: 9999px;
-      padding: 14px 20px;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
-    .search-btn {
-      background: #6366f1;
-      color: white;
-      border: none;
-      border-radius: 9999px;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .trending-label {
-      text-align: center;
-      color: #64748b;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-    .trending {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 35px;
-    }
-    .pill {
-      background: #1e2937;
-      color: #e2e8f0;
-      padding: 8px 18px;
-      border-radius: 9999px;
-      font-size: 14px;
-      cursor: pointer;
-      border: 1px solid #334155;
-      transition: all 0.2s;
-    }
-    .pill:hover {
-      background: #334155;
-      transform: scale(1.05);
-    }
-    .actions {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 50px;
-    }
-    .btn-primary {
-      flex: 1;
-      background: #6366f1;
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 9999px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .btn-secondary {
-      flex: 1;
-      background: transparent;
-      color: #e2e8f0;
-      border: 1px solid #475569;
-      padding: 16px;
-      border-radius: 9999px;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 24px;
       cursor: pointer;
     }
 
-    /* Explore Section */
+    /* Hamburger Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+    }
+    .side-menu.active {
+      display: flex;
+    }
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .close-btn {
+      width: 42px;
+      height: 42px;
+      background: #1e2937;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .menu-content {
+      padding: 20px;
+      flex: 1;
+    }
+    .menu-content a {
+      display: block;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid #334155;
+    }
+    .menu-get-started {
+      margin: 30px 20px 40px;
+      padding: 18px;
+      background: #6366f1;
+      color: white;
+      text-align: center;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    h1 { font-size: 32px; font-weight: 800; text-align: center; margin: 40px 0 15px; }
+    .subtitle { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
+    .search-container { display: flex; gap: 10px; margin-bottom: 30px; }
+    .search-input { flex: 1; background: #1e2937; border: 1px solid #334155; border-radius: 9999px; padding: 14px 20px; color: white; font-size: 16px; }
+    .search-btn { background: #6366f1; color: white; border: none; border-radius: 9999px; padding: 14px 28px; font-weight: 600; cursor: pointer; }
+    .trending-label { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 12px; }
+    .trending { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 35px; }
+    .pill { background: #1e2937; color: #e2e8f0; padding: 8px 18px; border-radius: 9999px; font-size: 14px; cursor: pointer; border: 1px solid #334155; }
+    .actions { display: flex; gap: 12px; margin-bottom: 50px; }
+    .btn-primary { flex: 1; background: #6366f1; color: white; border: none; padding: 16px; border-radius: 9999px; font-weight: 700; cursor: pointer; }
+    .btn-secondary { flex: 1; background: transparent; color: #e2e8f0; border: 1px solid #475569; padding: 16px; border-radius: 9999px; font-weight: 600; cursor: pointer; }
+
     .explore-section { margin-bottom: 50px; }
     .explore-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; }
-    .explore-subtitle { text-align: center; color: #94a3b8; font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
+    .explore-subtitle { text-align: center; color: #94a3b8; font-size: 15px; margin-bottom: 30px; }
     .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .market-card {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 22px 18px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .market-card:hover { transform: translateY(-4px); }
-    .market-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px; font-size: 26px;
-    }
+    .market-card { background: #1e2937; border-radius: 20px; padding: 22px 18px; text-align: center; cursor: pointer; }
+    .market-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
     .market-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
     .market-card p { font-size: 13px; color: #64748b; }
 
-    /* CTA Banner */
-    .cta-banner {
-      background: #4c1d95;
-      border-radius: 24px;
-      padding: 35px 25px;
-      text-align: center;
-      margin-bottom: 50px;
-    }
+    .cta-banner { background: #4c1d95; border-radius: 24px; padding: 35px 25px; text-align: center; margin-bottom: 50px; }
     .cta-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 15px; }
-    .cta-banner p { color: #c4b5fd; font-size: 15px; line-height: 1.5; margin-bottom: 25px; }
-    .cta-btn {
-      background: #1e2937; color: white; border: none;
-      padding: 14px 40px; border-radius: 9999px; font-size: 16px; font-weight: 700; cursor: pointer;
-    }
+    .cta-banner p { color: #c4b5fd; font-size: 15px; margin-bottom: 25px; }
+    .cta-btn { background: #1e2937; color: white; border: none; padding: 14px 40px; border-radius: 9999px; font-weight: 700; cursor: pointer; }
 
-    .floating-telegram {
-      position: fixed; bottom: 100px; right: 20px;
-      width: 56px; height: 56px; background: #0ea5e9;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 28px; box-shadow: 0 10px 15px rgba(14, 165, 233, 0.4);
-      cursor: pointer; z-index: 100;
-    }
+    .floating-telegram { position: fixed; bottom: 100px; right: 20px; width: 56px; height: 56px; background: #0ea5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; z-index: 100; }
 
-    /* === FINAL FOOTER (from your last screenshot) === */
-    .footer {
-      padding: 40px 20px 30px;
-      border-top: 1px solid #334155;
-      margin-top: 30px;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .footer-desc {
-      color: #94a3b8;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
-    .footer-section {
-      margin-bottom: 30px;
-    }
-    .footer-section h4 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: #e2e8f0;
-    }
-    .footer-section a {
-      display: block;
-      color: #64748b;
-      text-decoration: none;
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-    .footer-section a:hover {
-      color: #94a3b8;
-    }
-    .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .footer-bottom span {
-      background: #1e2937;
-      padding: 8px 20px;
-      border-radius: 9999px;
-      font-size: 14px;
-    }
+    .footer { padding: 40px 20px 30px; border-top: 1px solid #334155; margin-top: 30px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .footer-desc { color: #94a3b8; font-size: 15px; margin-bottom: 30px; }
+    .footer-section { margin-bottom: 30px; }
+    .footer-section h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-section a { display: block; color: #64748b; text-decoration: none; font-size: 15px; margin-bottom: 10px; }
+    .footer-bottom { text-align: center; margin-top: 20px; }
+    .footer-bottom span { background: #1e2937; padding: 8px 20px; border-radius: 9999px; font-size: 14px; }
 
-    /* Firebase Demo */
-    .demo-section {
-      max-width: 480px;
-      margin: 40px auto;
-      padding: 25px;
-      background: #1e2937;
-      border-radius: 20px;
-    }
-    .demo-section h3 { text-align: center; margin-bottom: 20px; }
-    .message-input {
-      width: 100%; background: #0f172a; border: 1px solid #334155;
-      border-radius: 12px; padding: 14px; color: white; font-size: 16px; margin-bottom: 12px;
-    }
-    .send-btn {
-      width: 100%; background: #6366f1; color: white;
-      border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer;
-    }
+    .demo-section { max-width: 480px; margin: 40px auto; padding: 25px; background: #1e2937; border-radius: 20px; }
+    .message-input { width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px; color: white; font-size: 16px; margin-bottom: 12px; }
+    .send-btn { width: 100%; background: #6366f1; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; }
     .messages-list { margin-top: 20px; max-height: 200px; overflow-y: auto; }
-    .message-item {
-      background: #0f172a; padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 15px;
+    .message-item { background: #0f172a; padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 15px; }
+
+    /* === LOADING OVERLAY === */
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 300;
+      flex-direction: column;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #334155;
+      border-top: 5px solid #6366f1;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #loadingOverlay p {
+      margin-top: 20px;
+      color: #94a3b8;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -271,7 +193,7 @@
         <div class="logo-circle">L</div>
         <span class="logo-text">LogginSuite</span>
       </div>
-      <button class="menu-btn" onclick="alert('Menu coming soon!')">☰</button>
+      <button class="menu-btn" onclick="openMenu()">☰</button>
     </header>
 
     <!-- Hero -->
@@ -295,102 +217,66 @@
 
     <!-- Action Buttons -->
     <div class="actions">
-      <button class="btn-primary" onclick="getStarted()">Get Started Free</button>
+      <button class="btn-primary" onclick="handleGetStarted()">Get Started Free</button>
       <button class="btn-secondary" onclick="exploreServices()">Explore Services</button>
     </div>
 
     <!-- Explore Market Sectors -->
     <div class="explore-section">
       <h2 class="explore-title">Explore Market Sectors</h2>
-      <p class="explore-subtitle">
-        Everything you need to scale your digital presence.<br>
-        Browse our comprehensive catalog of verified assets.
-      </p>
-
+      <p class="explore-subtitle">Everything you need to scale your digital presence.<br>Browse our comprehensive catalog of verified assets.</p>
       <div class="market-grid">
-        <div class="market-card" onclick="showCollection('Social Accounts')">
-          <div class="market-icon" style="background:#f59e0b;">🧑‍🤝‍🧑</div>
-          <h3>Social Accounts</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('Virtual Numbers')">
-          <div class="market-icon" style="background:#3b82f6;">📞</div>
-          <h3>Virtual Numbers</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('SMM Orders')">
-          <div class="market-icon" style="background:#8b5cf6;">📈</div>
-          <h3>SMM Orders</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('Software Logs')">
-          <div class="market-icon" style="background:#6366f1;">💻</div>
-          <h3>Software Logs</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('Proxy')">
-          <div class="market-icon" style="background:#ef4444;">🔗</div>
-          <h3>Proxy</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('E-SIM')">
-          <div class="market-icon" style="background:#14b8a6;">📱</div>
-          <h3>E-SIM</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('Streaming')">
-          <div class="market-icon" style="background:#f59e0b;">📺</div>
-          <h3>Streaming</h3><p>Browse Collection</p>
-        </div>
-        <div class="market-card" onclick="showCollection('VPN & Security')">
-          <div class="market-icon" style="background:#8b5cf6;">🛡️</div>
-          <h3>VPN & Security</h3><p>Browse Collection</p>
-        </div>
+        <div class="market-card" onclick="showCollection('Social Accounts')"><div class="market-icon" style="background:#f59e0b;">🧑‍🤝‍🧑</div><h3>Social Accounts</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Virtual Numbers')"><div class="market-icon" style="background:#3b82f6;">📞</div><h3>Virtual Numbers</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('SMM Orders')"><div class="market-icon" style="background:#8b5cf6;">📈</div><h3>SMM Orders</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Software Logs')"><div class="market-icon" style="background:#6366f1;">💻</div><h3>Software Logs</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Proxy')"><div class="market-icon" style="background:#ef4444;">🔗</div><h3>Proxy</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('E-SIM')"><div class="market-icon" style="background:#14b8a6;">📱</div><h3>E-SIM</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Streaming')"><div class="market-icon" style="background:#f59e0b;">📺</div><h3>Streaming</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('VPN & Security')"><div class="market-icon" style="background:#8b5cf6;">🛡️</div><h3>VPN & Security</h3><p>Browse Collection</p></div>
       </div>
     </div>
 
     <!-- Ready to get started? -->
     <div class="cta-banner">
       <h2>Ready to get started?</h2>
-      <p>Join thousands of users leveraging our platform<br>for secure verification and growth.</p>
-      <button class="cta-btn" onclick="getStarted()">Get Started →</button>
+      <p>Join thousands of users leveraging our platform for secure verification and growth.</p>
+      <button class="cta-btn" onclick="handleGetStarted()">Get Started →</button>
     </div>
   </div>
 
   <!-- Floating Telegram -->
   <div class="floating-telegram" onclick="openTelegram()">✈️</div>
 
-  <!-- FINAL FOOTER (from your last screenshot) -->
+  <!-- Footer -->
   <div class="footer">
     <div class="footer-logo">
       <div class="logo-circle" style="width:36px;height:36px;font-size:18px;">L</div>
       <span style="font-weight:700;font-size:20px;">LogginSuite</span>
     </div>
+    <p class="footer-desc">Your trusted platform for virtual numbers and social media marketing services.</p>
 
-    <p class="footer-desc">
-      Your trusted platform for virtual numbers and social media marketing services.
-    </p>
-
-    <div class="footer-section">
-      <h4>SERVICES</h4>
+    <div class="footer-section"><h4>SERVICES</h4>
       <a href="#" onclick="showCollection('Virtual Numbers')">Virtual Numbers</a>
       <a href="#" onclick="showCollection('SMM Services')">SMM Services</a>
       <a href="#" onclick="showCollection('Social Accounts')">Social Accounts</a>
     </div>
 
-    <div class="footer-section">
-      <h4>SUPPORT</h4>
+    <div class="footer-section"><h4>SUPPORT</h4>
       <a href="#">Help Center</a>
       <a href="#">Documentation</a>
       <a href="#">Status Page</a>
       <a href="#">Contact Us</a>
     </div>
 
-    <div class="footer-section">
-      <h4>LEGAL</h4>
+    <div class="footer-section"><h4>LEGAL</h4>
       <a href="#">Terms of Service</a>
       <a href="#">Privacy Policy</a>
       <a href="#">Cookie Policy</a>
       <a href="#">Refund Policy</a>
     </div>
 
-    <div class="footer-bottom">
-      <span>logginsuite.com</span>
-    </div>
+    <div class="footer-bottom"><span>logginsuite.com</span></div>
   </div>
 
   <!-- Firebase Demo -->
@@ -401,7 +287,35 @@
     <div class="messages-list" id="messages"></div>
   </div>
 
-  <!-- Firebase -->
+  <!-- ==================== HAMBURGER MENU ==================== -->
+  <div id="sideMenu" class="side-menu">
+    <div class="menu-header">
+      <div class="logo">
+        <div class="logo-circle">L</div>
+        <span class="logo-text">LogginSuite</span>
+      </div>
+      <button class="close-btn" onclick="closeMenu()">×</button>
+    </div>
+
+    <div class="menu-content">
+      <a href="#" onclick="closeMenu(); showCollection('Services')">Services</a>
+      <a href="#" onclick="closeMenu()">About</a>
+      <a href="#" onclick="closeMenu()">Contact</a>
+      <a href="#" onclick="closeMenu(); handleSignIn()">Sign In</a>
+    </div>
+
+    <div class="menu-get-started" onclick="closeMenu(); handleGetStarted()">
+      Get Started
+    </div>
+  </div>
+
+  <!-- ==================== LOADING OVERLAY ==================== -->
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Please wait...</p>
+  </div>
+
+  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   
@@ -419,12 +333,44 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
+    // ==================== LOADING FUNCTION ====================
+    function showLoadingThen(callback) {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'flex';
+
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        if (callback) callback();
+      }, 1500); // 1.5 seconds
+    }
+
+    // Get Started buttons now show loading first
+    function handleGetStarted() {
+      showLoadingThen(() => {
+        document.getElementById('messageInput').focus();
+      });
+    }
+
+    // Sign In from menu
+    function handleSignIn() {
+      showLoadingThen(() => {
+        alert("Sign In feature coming soon!");
+      });
+    }
+
+    // Menu Functions
+    function openMenu() {
+      document.getElementById('sideMenu').classList.add('active');
+    }
+    function closeMenu() {
+      document.getElementById('sideMenu').classList.remove('active');
+    }
+
     function searchProducts() {
       const q = document.getElementById('searchInput').value.trim();
       if (q) alert("Searching for: " + q);
     }
     function selectTrending(el) { document.getElementById('searchInput').value = el.textContent; }
-    function getStarted() { document.getElementById('messageInput').focus(); }
     function exploreServices() { document.querySelector('.explore-section').scrollIntoView({behavior:'smooth'}); }
     function showCollection(name) { alert(name + " collection coming soon!"); }
     function openTelegram() { alert("Telegram support coming soon!"); }
