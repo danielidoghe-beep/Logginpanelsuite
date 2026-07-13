@@ -542,7 +542,13 @@ function googleLogin() {
     function exploreServices() { document.querySelector('.explore-section').scrollIntoView({ behavior: 'smooth' }); }
     function showCollection(name) { alert(name + " coming soon!"); }
 function forgotPassword(){
-    showPage("forgotPage");
+
+    showLoadingThen(() => {
+
+        showPage("forgotPage");
+
+    });
+
 }
 
 let countdown = 60;
