@@ -610,17 +610,7 @@ auth.onAuthStateChanged(user => {
         showPage('homePage');
     }
 });
- auth.getRedirectResult()
-.then((result) => {
-
-    if (result.user) {
-        loadDashboard(result.user);
-    }
-
-})
-.catch((error) => {
-    alert(error.message);
-});
+ 
   </script>
 </body>
 </html>
