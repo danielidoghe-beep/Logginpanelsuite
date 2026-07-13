@@ -486,7 +486,44 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
       overlay.style.display = 'flex';
       setTimeout(() => { overlay.style.display = 'none'; if (callback) callback(); }, 1500);
     }
+function googleLogin(){
 
+    showLoadingThen(() => {
+
+        auth.signInWithPopup(googleProvider)
+        .then((result) => {
+
+            const user = result.user;
+
+            db.collection("users").doc(user.uid).get()
+            .then((doc)=>{
+
+                if(!doc.exists){
+
+                    db.collection("users").doc(user.uid).set({
+
+                        username:user.displayName,
+                        email:user.email
+
+                    });
+
+                }
+
+                loadDashboard(user);
+
+            });
+
+        })
+
+        .catch((error)=>{
+
+            alert(error.message);
+
+        });
+
+    });
+
+}
     function showPage(page) {
       document.getElementById('homePage').style.display = 'none';
       document.getElementById('loginPage').style.display = 'none';
