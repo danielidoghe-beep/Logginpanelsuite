@@ -496,21 +496,6 @@ function googleLogin() {
 
 }
 
-                loadDashboard(user);
-
-            });
-
-        })
-
-        .catch((error)=>{
-
-            alert(error.message);
-
-        });
-
-    });
-
-}
     function showPage(page) {
       document.getElementById('homePage').style.display = 'none';
       document.getElementById('loginPage').style.display = 'none';
@@ -604,13 +589,6 @@ function googleLogin() {
 
     console.log(error);
 
-});
-.catch((error) => {
-    alert(
-        "Code: " + error.code +
-        "\nMessage: " + error.message
-    );
-    console.log(error);
 });
 
 auth.onAuthStateChanged(user => {
