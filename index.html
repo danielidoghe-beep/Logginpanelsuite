@@ -6,7 +6,7 @@
   <title>LogginSuite</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0f172a; color: #f8fafc; font-family: system-ui; padding-bottom: 70px; }
+    body { background: #0f172a; color: #f8fafc; font-family: system-ui; }
     .container { max-width: 480px; margin: 0 auto; padding: 20px; }
 
     header { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
@@ -102,6 +102,7 @@
     .status-row { display: flex; gap: 10px; }
     .status-pill { flex: 1; background: #0f172a; padding: 12px; border-radius: 12px; text-align: center; }
 
+    /* New sections from your screenshot */
     .service-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -136,184 +137,22 @@
       font-weight: 600;
     }
 
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      max-width: 480px;
-      margin: 0 auto;
-      background: #1e2937;
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 0;
-      border-top: 1px solid #334155;
-      z-index: 100;
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #64748b;
-      font-size: 12px;
-      text-decoration: none;
-    }
-    .nav-item.active { color: #3b82f6; }
-    .nav-item span { font-size: 20px; margin-bottom: 2px; }
-
-    /* Side Menu */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0f172a;
-      z-index: 200;
-      display: none;
-      flex-direction: column;
-    }
+    .side-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f172a; z-index: 200; display: none; flex-direction: column; }
     .side-menu.active { display: flex; }
+    .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; }
+    .close-btn { width: 42px; height: 42px; background: #1e2937; border: none; border-radius: 10px; color: white; font-size: 26px; cursor: pointer; }
+    .menu-content { padding: 20px; flex: 1; }
+    .menu-content a { display: block; color: #e2e8f0; text-decoration: none; font-size: 20px; padding: 18px 0; border-bottom: 1px solid #334155; }
+    .menu-get-started { margin: 30px 20px 40px; padding: 18px; background: #6366f1; color: white; text-align: center; border-radius: 16px; font-weight: 700; cursor: pointer; }
 
-    .user-profile {
-      padding: 20px;
-      background: #1e2937;
-      border-radius: 0 0 20px 20px;
-      margin-bottom: 20px;
-    }
-    .user-avatar {
-      width: 50px;
-      height: 50px;
-      background: #f59e0b;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-    .user-name { font-size: 18px; font-weight: 700; }
-    .user-email { color: #64748b; font-size: 14px; }
-
-    .quick-nav {
-      padding: 0 20px;
-      margin-bottom: 20px;
-    }
-    .quick-nav-title {
-      color: #64748b;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      padding-left: 5px;
-    }
-    .menu-item {
-      display: flex;
-      align-items: center;
-      padding: 14px 5px;
-      color: #e2e8f0;
-      text-decoration: none;
-      font-size: 16px;
-      gap: 15px;
-    }
-
-    .logout-section {
-      margin-top: auto;
-      padding: 20px;
-    }
-    .logout-btn-red {
-      width: 100%;
-      background: #3f1f1f;
-      color: #ef4444;
-      border: none;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .side-menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-    .close-btn {
-      width: 42px;
-      height: 42px;
-      background: #1e2937;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 26px;
-      cursor: pointer;
-    }
-
-    /* ==================== SUPPORT CENTER PAGE ==================== */
-    .support-page {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 20px;
-      display: none;
-    }
-    .support-title {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .support-subtitle {
-      color: #94a3b8;
-      font-size: 16px;
-      margin-bottom: 30px;
-    }
-    .support-list {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 10px;
-      margin-bottom: 25px;
-    }
-    .support-item {
-      display: flex;
-      align-items: center;
-      padding: 16px;
-      color: #e2e8f0;
-      text-decoration: none;
-      font-size: 16px;
-      gap: 15px;
-    }
-    .support-item:hover {
-      background: #334155;
-      border-radius: 12px;
-    }
-    .quick-actions-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-    .quick-action {
-      display: flex;
-      align-items: center;
-      padding: 16px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      color: white;
-    }
-    .quick-action.chat { background: #166534; }
-    .quick-action.telegram { background: #1e40af; }
-    .quick-action.docs { background: #581c87; }
+    #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.85); display: none; justify-content: center; align-items: center; z-index: 300; flex-direction: column; }
+    .spinner { width: 50px; height: 50px; border: 5px solid #334155; border-top: 5px solid #6366f1; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
 
-  <!-- HOME PAGE -->
+  <!-- HOME PAGE (same as before) -->
   <div id="homePage" class="container">
     <header>
       <div class="logo">
@@ -384,7 +223,7 @@
     <button class="auth-btn" onclick="registerUser()">Create Account</button>
   </div>
 
-  <!-- DASHBOARD -->
+  <!-- ==================== DASHBOARD (Updated) ==================== -->
   <div id="dashboardPage" class="container dashboard">
     <header>
       <div class="logo">
@@ -396,6 +235,7 @@
 
     <div class="welcome" id="welcomeText">Welcome back!</div>
 
+    <!-- Balance Card -->
     <div class="balance-card">
       <div class="balance-header">
         <div>
@@ -409,11 +249,13 @@
       </div>
     </div>
 
+    <!-- Stats -->
     <div class="stats-row">
       <div class="stat-box"><div class="label">Total Spent</div><div class="value">₦0.00</div></div>
       <div class="stat-box"><div class="label">Total Orders</div><div class="value">0</div></div>
     </div>
 
+    <!-- Rent Virtual Numbers -->
     <div class="rent-card">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div>
@@ -427,6 +269,7 @@
       </div>
     </div>
 
+    <!-- Social Accounts -->
     <div class="social-card">
       <div class="social-header">
         <div style="display:flex; align-items:center; gap:8px;">
@@ -443,6 +286,7 @@
       </div>
     </div>
 
+    <!-- NEW SECTIONS FROM YOUR SCREENSHOT -->
     <div class="service-grid">
       <div class="service-card">
         <div style="font-size:24px; margin-bottom:8px;">📞</div>
@@ -470,104 +314,30 @@
       </div>
     </div>
 
+    <!-- All Caught Up Section -->
     <div class="all-caught-up">
       <div class="bell">🔔</div>
       <h3>All caught up!</h3>
       <p>No recent activity to show</p>
     </div>
-
-    <!-- Bottom Nav -->
-    <div class="bottom-nav">
-      <a href="#" onclick="goToHomeFromDashboard()" class="nav-item active">
-        <span>🏠</span>
-        <div>Home</div>
-      </a>
-      <a href="#" onclick="alert('Wallet coming soon!')" class="nav-item">
-        <span>💼</span>
-        <div>Wallet</div>
-      </a>
-      <a href="#" onclick="alert('Services coming soon!')" class="nav-item">
-        <span>📦</span>
-        <div>Services</div>
-      </a>
-      <a href="#" onclick="alert('Support coming soon!')" class="nav-item">
-        <span>💬</span>
-        <div>Support</div>
-      </a>
-      <a href="#" onclick="openMenu()" class="nav-item">
-        <span>☰</span>
-        <div>Menu</div>
-      </a>
-    </div>
   </div>
 
-  <!-- ==================== SUPPORT CENTER PAGE ==================== -->
-  <div id="supportPage" class="support-page">
-    <h1 class="support-title">Support Center</h1>
-    <p class="support-subtitle">Get help, contact support, and learn more about our services</p>
-
-    <div class="support-list">
-      <a href="#" class="support-item"><span>❓</span> Help Center</a>
-      <a href="#" class="support-item"><span>💬</span> Contact Us</a>
-      <a href="#" class="support-item"><span>🎫</span> My Tickets</a>
-      <a href="#" class="support-item"><span>📖</span> Tutorials</a>
-      <a href="#" class="support-item"><span>📡</span> System Status</a>
-    </div>
-
-    <div class="quick-actions-title">Quick Actions</div>
-    
-    <a href="#" class="quick-action chat" onclick="alert('Live Chat coming soon!')">
-      <span>💬</span> Start Live Chat
-    </a>
-    <a href="#" class="quick-action telegram" onclick="alert('Telegram Channel coming soon!')">
-      <span>✈️</span> Telegram Channel
-    </a>
-    <a href="#" class="quick-action docs" onclick="alert('Documentation coming soon!')">
-      <span>📚</span> Documentation
-    </a>
-  </div>
-
-  <!-- SIDE MENU -->
+  <!-- HAMBURGER MENU -->
   <div id="sideMenu" class="side-menu">
-    <div class="side-menu-header">
-      <div></div>
+    <div class="menu-header">
+      <div class="logo">
+        <div class="logo-circle">L</div>
+        <span class="logo-text">LogginSuite</span>
+      </div>
       <button class="close-btn" onclick="closeMenu()">×</button>
     </div>
-
-    <div class="user-profile">
-      <div class="user-avatar" id="menuAvatar">D</div>
-      <div class="user-name" id="menuName">User</div>
-      <div class="user-email" id="menuEmail">user@email.com</div>
+    <div class="menu-content">
+      <a href="#" onclick="closeMenu(); showCollection('Services')">Services</a>
+      <a href="#" onclick="closeMenu()">About</a>
+      <a href="#" onclick="closeMenu()">Contact</a>
+      <a href="#" onclick="closeMenu(); goToLogin()">Sign In</a>
     </div>
-
-    <div class="quick-nav">
-      <div class="quick-nav-title">QUICK NAVIGATION</div>
-      
-      <a href="#" class="menu-item" onclick="closeMenu(); showCollection('Virtual Numbers')">
-        <span>📞</span> Virtual Numbers
-      </a>
-      <a href="#" class="menu-item" onclick="closeMenu(); showCollection('SMM Services')">
-        <span>📈</span> SMM Services
-      </a>
-      <a href="#" class="menu-item" onclick="closeMenu(); showCollection('Social Accounts')">
-        <span>👥</span> Social Accounts
-      </a>
-      <a href="#" class="menu-item" onclick="closeMenu(); showCollection('Social Accounts 2')">
-        <span>👥</span> Social Accounts 2
-      </a>
-      <a href="#" class="menu-item" onclick="closeMenu(); showSupportPage()">
-        <span>❓</span> Support
-      </a>
-      <a href="#" class="menu-item" onclick="closeMenu()">
-        <span>⚙️</span> Settings
-      </a>
-    </div>
-
-    <div class="logout-section">
-      <button class="logout-btn-red" onclick="logoutUser()">
-        <span>🚪</span> Logout
-      </button>
-    </div>
+    <div class="menu-get-started" onclick="closeMenu(); goToLogin()">Get Started</div>
   </div>
 
   <!-- Loading Overlay -->
@@ -605,35 +375,14 @@
       document.getElementById('loginPage').style.display = 'none';
       document.getElementById('registerPage').style.display = 'none';
       document.getElementById('dashboardPage').style.display = 'none';
-      document.getElementById('supportPage').style.display = 'none';
       document.getElementById(page).style.display = 'block';
     }
 
     function goToLogin() { showLoadingThen(() => showPage('loginPage')); }
     function goToRegister() { showLoadingThen(() => showPage('registerPage')); }
-    function goToHomeFromDashboard() { showPage('homePage'); }
-    function showSupportPage() { showPage('supportPage'); }
 
-    function openMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.add('active');
-      
-      const user = auth.currentUser;
-      if (user) {
-        db.collection("users").doc(user.uid).get().then(doc => {
-          let name = user.email.split('@')[0];
-          if (doc.exists && doc.data().username) name = doc.data().username;
-          
-          document.getElementById('menuName').textContent = name;
-          document.getElementById('menuEmail').textContent = user.email;
-          document.getElementById('menuAvatar').textContent = name.charAt(0).toUpperCase();
-        });
-      }
-    }
-
-    function closeMenu() {
-      document.getElementById('sideMenu').classList.remove('active');
-    }
+    function openMenu() { document.getElementById('sideMenu').classList.add('active'); }
+    function closeMenu() { document.getElementById('sideMenu').classList.remove('active'); }
 
     function searchProducts() { const q = document.getElementById('searchInput').value.trim(); if (q) alert("Searching for: " + q); }
     function selectTrending(el) { document.getElementById('searchInput').value = el.textContent; }
@@ -680,10 +429,7 @@
 
     function logoutUser() {
       showLoadingThen(() => {
-        auth.signOut().then(() => {
-          closeMenu();
-          showPage('homePage');
-        });
+        auth.signOut().then(() => showPage('homePage'));
       });
     }
 
