@@ -54,7 +54,7 @@
     .form-group input { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 16px; }
     .auth-btn { width: 100%; background: #1e40af; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; margin-top: 10px; }
 
-    /* ==================== IMPROVED DASHBOARD ==================== */
+    /* Dashboard */
     .dashboard { display: none; }
     .welcome { font-size: 17px; margin-bottom: 20px; color: #e2e8f0; }
 
@@ -65,36 +65,12 @@
       color: white;
       margin-bottom: 18px;
     }
-    .balance-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .balance-amount {
-      font-size: 32px;
-      font-weight: 800;
-    }
-    .add-funds-btn {
-      background: #111827;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 15px;
-    }
+    .balance-header { display: flex; justify-content: space-between; align-items: center; }
+    .balance-amount { font-size: 32px; font-weight: 800; }
+    .add-funds-btn { background: #111827; color: white; border: none; padding: 12px 22px; border-radius: 9999px; font-weight: 700; font-size: 15px; }
 
-    .stats-row {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .stat-box {
-      flex: 1;
-      background: #1e2937;
-      padding: 16px;
-      border-radius: 16px;
-    }
+    .stats-row { display: flex; gap: 12px; margin-bottom: 20px; }
+    .stat-box { flex: 1; background: #1e2937; padding: 16px; border-radius: 16px; }
     .stat-box .label { color: #94a3b8; font-size: 14px; }
     .stat-box .value { font-size: 24px; font-weight: 800; margin-top: 4px; }
 
@@ -105,7 +81,7 @@
       color: white;
       margin-bottom: 20px;
     }
-    .rent-card .rent-btn {
+    .rent-btn {
       background: white;
       color: #1e40af;
       padding: 8px 20px;
@@ -119,30 +95,38 @@
       background: #1e2937;
       border-radius: 20px;
       padding: 20px;
+      margin-bottom: 20px;
     }
-    .social-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
+    .social-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .social-count { font-size: 42px; font-weight: 800; text-align: center; margin: 10px 0; }
+    .status-row { display: flex; gap: 10px; }
+    .status-pill { flex: 1; background: #0f172a; padding: 12px; border-radius: 12px; text-align: center; }
+
+    /* New sections from your screenshot */
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
     }
-    .social-count {
-      font-size: 42px;
-      font-weight: 800;
+    .service-card {
+      background: #1e2937;
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .service-card h3 { font-size: 18px; margin-bottom: 6px; }
+    .service-card p { color: #94a3b8; font-size: 14px; }
+
+    .all-caught-up {
+      background: #1e2937;
+      border-radius: 20px;
+      padding: 30px 20px;
       text-align: center;
-      margin: 10px 0;
+      margin-bottom: 30px;
     }
-    .status-row {
-      display: flex;
-      gap: 10px;
-    }
-    .status-pill {
-      flex: 1;
-      background: #0f172a;
-      padding: 12px;
-      border-radius: 12px;
-      text-align: center;
-    }
+    .all-caught-up .bell { font-size: 32px; margin-bottom: 15px; }
+    .all-caught-up h3 { font-size: 20px; margin-bottom: 8px; }
+    .all-caught-up p { color: #64748b; }
 
     .logout-btn {
       background: #ef4444;
@@ -153,7 +137,6 @@
       font-weight: 600;
     }
 
-    /* Side Menu */
     .side-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f172a; z-index: 200; display: none; flex-direction: column; }
     .side-menu.active { display: flex; }
     .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; }
@@ -169,7 +152,7 @@
 </head>
 <body>
 
-  <!-- HOME PAGE -->
+  <!-- HOME PAGE (same as before) -->
   <div id="homePage" class="container">
     <header>
       <div class="logo">
@@ -200,7 +183,6 @@
       <button class="btn-secondary" onclick="exploreServices()">Explore Services</button>
     </div>
 
-    <!-- Explore Market Sectors -->
     <div class="explore-section">
       <h2 class="explore-title">Explore Market Sectors</h2>
       <p class="explore-subtitle">Everything you need to scale your digital presence.<br>Browse our comprehensive catalog of verified assets.</p>
@@ -241,7 +223,7 @@
     <button class="auth-btn" onclick="registerUser()">Create Account</button>
   </div>
 
-  <!-- ==================== IMPROVED DASHBOARD ==================== -->
+  <!-- ==================== DASHBOARD (Updated) ==================== -->
   <div id="dashboardPage" class="container dashboard">
     <header>
       <div class="logo">
@@ -269,14 +251,8 @@
 
     <!-- Stats -->
     <div class="stats-row">
-      <div class="stat-box">
-        <div class="label">Total Spent</div>
-        <div class="value">₦0.00</div>
-      </div>
-      <div class="stat-box">
-        <div class="label">Total Orders</div>
-        <div class="value">0</div>
-      </div>
+      <div class="stat-box"><div class="label">Total Spent</div><div class="value">₦0.00</div></div>
+      <div class="stat-box"><div class="label">Total Orders</div><div class="value">0</div></div>
     </div>
 
     <!-- Rent Virtual Numbers -->
@@ -304,17 +280,45 @@
       </div>
       <div class="social-count">0</div>
       <div style="text-align:center; color:#94a3b8; margin-bottom:15px;">purchased</div>
-
       <div class="status-row">
-        <div class="status-pill">
-          <div style="color:#eab308;">● Pending</div>
-          <div style="font-size:20px; font-weight:700;">0</div>
-        </div>
-        <div class="status-pill">
-          <div style="color:#22c55e;">● Completed</div>
-          <div style="font-size:20px; font-weight:700;">0</div>
-        </div>
+        <div class="status-pill"><div style="color:#eab308;">● Pending</div><div style="font-size:20px; font-weight:700;">0</div></div>
+        <div class="status-pill"><div style="color:#22c55e;">● Completed</div><div style="font-size:20px; font-weight:700;">0</div></div>
       </div>
+    </div>
+
+    <!-- NEW SECTIONS FROM YOUR SCREENSHOT -->
+    <div class="service-grid">
+      <div class="service-card">
+        <div style="font-size:24px; margin-bottom:8px;">📞</div>
+        <h3>Rent Number</h3>
+        <p>Get a virtual number</p>
+        <span style="float:right; color:#94a3b8;">→</span>
+      </div>
+      <div class="service-card">
+        <div style="font-size:24px; margin-bottom:8px;">📈</div>
+        <h3>SMM Services</h3>
+        <p>Boost your social media</p>
+        <span style="float:right; color:#94a3b8;">→</span>
+      </div>
+      <div class="service-card">
+        <div style="font-size:24px; margin-bottom:8px;">👥</div>
+        <h3>Social Accounts</h3>
+        <p>Manage your accounts</p>
+        <span style="float:right; color:#94a3b8;">→</span>
+      </div>
+      <div class="service-card">
+        <div style="font-size:24px; margin-bottom:8px;">👥</div>
+        <h3>Social Accounts 2</h3>
+        <p>More social accounts</p>
+        <span style="float:right; color:#94a3b8;">→</span>
+      </div>
+    </div>
+
+    <!-- All Caught Up Section -->
+    <div class="all-caught-up">
+      <div class="bell">🔔</div>
+      <h3>All caught up!</h3>
+      <p>No recent activity to show</p>
     </div>
   </div>
 
@@ -363,10 +367,7 @@
     function showLoadingThen(callback) {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'flex';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-        if (callback) callback();
-      }, 1500);
+      setTimeout(() => { overlay.style.display = 'none'; if (callback) callback(); }, 1500);
     }
 
     function showPage(page) {
