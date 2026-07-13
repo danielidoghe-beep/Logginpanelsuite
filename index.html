@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogginSuite - The Ultimate Panel Suite</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-circle {
+      width: 42px;
+      height: 42px;
+      background: #3b82f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      background: #1e2937;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-align: center;
+      margin: 40px 0 15px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    .search-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .search-input {
+      flex: 1;
+      background: #1e2937;
+      border: 1px solid #334155;
+      border-radius: 9999px;
+      padding: 14px 20px;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+    .search-btn {
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .trending-label {
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .trending {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 35px;
+    }
+    .pill {
+      background: #1e2937;
+      color: #e2e8f0;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #334155;
+      transition: all 0.2s;
+    }
+    .pill:hover {
+      background: #334155;
+      transform: scale(1.05);
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      flex: 1;
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      flex: 1;
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid #475569;
+      padding: 16px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .floating-telegram {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: #0ea5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 10px 15px rgba(14, 165, 233, 0.4);
+      cursor: pointer;
+      z-index: 100;
+    }
+    .bottom-bar {
+      max-width: 480px;
+      margin: 40px auto 0;
+      padding: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .service-pill {
+      background: #1e2937;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .demo-section {
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #1e2937;
+      border-radius: 20px;
+    }
+    .demo-section h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .message-input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 14px;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .send-btn {
+      width: 100%;
+      background: #6366f1;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .messages-list {
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .message-item {
+      background: #0f172a;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <div class="logo-circle">L</div>
+        <span class="logo-text">LogginSuite</span>
+      </div>
+      <button class="menu-btn" onclick="alert('Menu will be added in next update!')">☰</button>
+    </header>
+
+    <!-- Hero -->
+    <h1>The Ultimate Panel Suite<br>for Digital Assets</h1>
+    <p class="subtitle">Trusted by thousands of businesses worldwide.</p>
+
+    <!-- Search -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+      <button class="search-btn" onclick="searchProducts()">Search</button>
+    </div>
+
+    <!-- Trending -->
+    <p class="trending-label">Trending:</p>
+    <div class="trending">
+      <span class="pill" onclick="selectTrending(this)">WhatsApp</span>
+      <span class="pill" onclick="selectTrending(this)">Telegram Premium</span>
+      <span class="pill" onclick="selectTrending(this)">US Number</span>
+      <span class="pill" onclick="selectTrending(this)">Instagram Likes</span>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn-primary" onclick="getStarted()">Get Started Free</button>
+      <button class="btn-secondary" onclick="exploreServices()">Explore Services</button>
+    </div>
+  </div>
+
+  <!-- Floating Telegram Button -->
+  <div class="floating-telegram" onclick="openTelegram()">✈️</div>
+
+  <!-- Bottom Services -->
+  <div class="bottom-bar">
+    <span class="service-pill">TikTok</span>
+    <span class="service-pill">Facebook</span>
+    <span class="service-pill">Amazon</span>
+  </div>
+
+  <!-- Firebase Demo Section (styled to match) -->
+  <div class="demo-section">
+    <h3>Try Sending a Message (Firebase Demo)</h3>
+    <input type="text" id="messageInput" class="message-input" placeholder="Type your message...">
+    <button class="send-btn" onclick="sendMessage()">Send Message</button>
+    
+    <div class="messages-list" id="messages"></div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  
+  <script>
+    // ==================== FIREBASE CONFIG ====================
+    // Replace this with your own Firebase config from console.firebase.google.com
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY_HERE",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Search function
+    function searchProducts() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query) {
+        alert("Searching for: " + query + "\n(We'll add real search later)");
+      } else {
+        alert("Please type something to search");
+      }
+    }
+
+    // Trending pills
+    function selectTrending(element) {
+      const tag = element.textContent;
+      document.getElementById('searchInput').value = tag;
+      // Optional: auto search
+      // searchProducts();
+    }
+
+    // Get Started button
+    function getStarted() {
+      document.getElementById('messageInput').focus();
+      alert("Welcome to LogginSuite! Scroll down to try the demo.");
+    }
+
+    // Explore Services
+    function exploreServices() {
+      alert("Services page coming in the next update!");
+    }
+
+    // Floating Telegram button
+    function openTelegram() {
+      alert("Opening Telegram support... (We'll connect real Telegram later)");
+    }
+
+    // ==================== FIREBASE MESSAGE FEATURE ====================
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const text = input.value.trim();
+      if (!text) return alert("Please type a message first!");
+
+      db.collection("messages").add({
+        text: text,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(() => {
+        input.value = "";
+        loadMessages();
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error sending message. Make sure Firestore is enabled in test mode.");
+      });
+    }
+
+    function loadMessages() {
+      const container = document.getElementById('messages');
+      container.innerHTML = "";
+
+      db.collection("messages")
+        .orderBy("timestamp", "desc")
+        .limit(8)
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            const div = document.createElement('div');
+            div.className = 'message-item';
+            div.textContent = doc.data().text;
+            container.appendChild(div);
+          });
+        });
+    }
+
+    // Load messages when page opens
+    window.onload = function() {
+      loadMessages();
+    };
+  </script>
+</body>
+</html>
