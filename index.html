@@ -486,28 +486,15 @@ const googleProvider = new firebase.auth.GoogleAuthProvider();
       overlay.style.display = 'flex';
       setTimeout(() => { overlay.style.display = 'none'; if (callback) callback(); }, 1500);
     }
-function googleLogin(){
+function googleLogin() {
 
     showLoadingThen(() => {
 
-        auth.signInWithRedirect(googleProvider)
-        .then((result) => {
+        auth.signInWithRedirect(googleProvider);
 
-            const user = result.user;
+    });
 
-            db.collection("users").doc(user.uid).get()
-            .then((doc)=>{
-
-                if(!doc.exists){
-
-                    db.collection("users").doc(user.uid).set({
-
-                        username:user.displayName,
-                        email:user.email
-
-                    });
-
-                }
+}
 
                 loadDashboard(user);
 
@@ -591,10 +578,33 @@ function googleLogin(){
 .then((result) => {
 
     if (result.user) {
-        loadDashboard(result.user);
+
+        const user = result.user;
+
+        db.collection("users").doc(user.uid).get()
+        .then((doc) => {
+
+            if (!doc.exists) {
+
+                db.collection("users").doc(user.uid).set({
+                    username: user.displayName,
+                    email: user.email
+                });
+
+            }
+
+            loadDashboard(user);
+
+        });
+
     }
 
 })
+.catch((error) => {
+
+    console.log(error);
+
+});
 .catch((error) => {
     alert(
         "Code: " + error.code +
