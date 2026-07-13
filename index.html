@@ -351,20 +351,6 @@
         <input type="email" id="forgotEmail" placeholder="Enter your email">
     </div>
 
-    <div class="form-group">
-        <label>6 Digit Code</label>
-        <input type="text" id="resetCode" maxlength="6" placeholder="000000">
-    </div>
-
-    <button class="auth-btn" id="sendCodeBtn" onclick="sendResetCode()">
-        Send Code
-    </button>
-
-    <p id="resendText"
-       style="display:none;text-align:center;margin-top:18px;color:#2563eb;cursor:pointer;"
-       onclick="resendCode()">
-       Resend Code (60s)
-    </p>
 
 </div>
   <!-- ==================== DASHBOARD (Updated) ==================== -->
@@ -549,42 +535,28 @@ function forgotPassword(){
 let countdown = 60;
 let timer;
 
-function sendResetCode(){
+  function sendResetCode(){
 
-    alert("Verification code sent.");
+    const email = document.getElementById("forgotEmail").value.trim();
 
-    document.getElementById("sendCodeBtn").style.display="none";
+    if(email === ""){
+        alert("Please enter your email.");
+        return;
+    }
 
-    const resend=document.getElementById("resendText");
-    resend.style.display="block";
+    auth.sendPasswordResetEmail(email)
+    .then(() => {
 
-    countdown=60;
+        alert("Password reset email sent successfully.\n\nPlease check your inbox or spam folder.");
 
-    resend.innerHTML="Resend Code ("+countdown+"s)";
+        showPage("loginPage");
 
-    timer=setInterval(()=>{
+    })
+    .catch((error) => {
 
-        countdown--;
+        alert(error.message);
 
-        resend.innerHTML="Resend Code ("+countdown+"s)";
-
-        if(countdown<=0){
-
-            clearInterval(timer);
-
-            resend.innerHTML="Resend Code";
-
-        }
-
-    },1000);
-
-}
-
-function resendCode(){
-
-    if(countdown>0)return;
-
-    sendResetCode();
+    });
 
 }
     function registerUser() {
