@@ -193,6 +193,35 @@
 .auth-page{
     position:relative;
 }
+ .google-btn{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    background:#fff;
+    color:#111827;
+    font-size:16px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.google-btn img{
+    width:22px;
+    height:22px;
+}
+
+.forgot-link{
+    margin-top:18px;
+    text-align:center;
+    color:#2563eb;
+    cursor:pointer;
+    font-size:15px;
+}
   </style>
 </head>
 <body>
@@ -282,12 +311,20 @@
   <div id="loginPage" class="auth-page">
 
     <button class="close-auth" onclick="showPage('homePage')">✕</button>
-
-    <h2>Login</h2>
+   
     <h2>Login</h2>
     <div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div>
     <div class="form-group"><label>Password</label><input type="password" id="loginPassword"></div>
     <button class="auth-btn" onclick="loginUser()">Sign in</button>
+
+<button class="google-btn" onclick="googleLogin()">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+    Sign in with Google
+</button>
+
+<p class="forgot-link" onclick="forgotPassword()">
+    Forgot Password?
+</p>
     <p style="text-align:center; margin-top:15px;">New here? <a href="#" onclick="goToRegister()" style="color:#1e40af;">Create an account</a></p>
   </div>
 
@@ -297,7 +334,6 @@
     <button class="close-auth" onclick="showPage('homePage')">✕</button>
 
     <h2>Create Account</h2> 
-    <h2>Create Account</h2>
     <div class="form-group"><label>Username</label><input type="text" id="regUsername"></div>
     <div class="form-group"><label>Email</label><input type="email" id="regEmail"></div>
     <div class="form-group"><label>Password</label><input type="password" id="regPassword"></div>
@@ -444,7 +480,7 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-
+const googleProvider = new firebase.auth.GoogleAuthProvider();
     function showLoadingThen(callback) {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'flex';
