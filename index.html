@@ -9,18 +9,20 @@
     body { background: #0f172a; color: #f8fafc; font-family: system-ui; }
     .container { max-width: 480px; margin: 0 auto; padding: 20px; }
 
-    header { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+    /* Home + Auth pages styles (shortened for space) */
+    header { display: flex; justify-content: space-between; padding: 15px 0; }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-circle { width: 42px; height: 42px; background: #3b82f6; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; }
     .logo-text { font-size: 22px; font-weight: 700; }
 
     .auth-page { max-width: 420px; margin: 40px auto; background: white; color: #1e2937; border-radius: 20px; padding: 30px 25px; }
+    .auth-page h2 { color: #1e40af; font-size: 32px; text-align: center; }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
     .form-group input { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 16px; }
     .auth-btn { width: 100%; background: #1e40af; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; margin-top: 10px; }
 
-    /* Dashboard */
+    /* ==================== DASHBOARD ==================== */
     .dashboard { display: none; }
     .welcome { font-size: 18px; margin-bottom: 20px; }
     .balance-card {
@@ -45,27 +47,28 @@
       padding: 20px;
       margin-bottom: 20px;
     }
-    .logout-btn {
-      background: #ef4444;
-      color: white;
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .rent-btn {
+      background: white;
+      color: #1e40af;
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-weight: 700;
       border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- HOME PAGE -->
+  <!-- ==================== HOME PAGE ==================== -->
   <div id="homePage" class="container">
+    <!-- Your existing home content (hero, search, explore, etc.) -->
     <header>
       <div class="logo">
         <div class="logo-circle">L</div>
         <span class="logo-text">LogginSuite</span>
       </div>
-      <button onclick="goToLogin()" style="background:#6366f1; color:white; border:none; padding:10px 20px; border-radius:10px; font-weight:600;">Login</button>
+      <button onclick="goToLogin()" style="background:#6366f1; color:white; border:none; padding:10px 20px; border-radius:10px;">Login</button>
     </header>
 
     <h1>The Ultimate Panel Suite<br>for Digital Assets</h1>
@@ -76,7 +79,7 @@
     </div>
   </div>
 
-  <!-- LOGIN PAGE -->
+  <!-- ==================== LOGIN PAGE ==================== -->
   <div id="loginPage" class="auth-page" style="display:none;">
     <h2>Login</h2>
     <div class="form-group">
@@ -89,11 +92,11 @@
     </div>
     <button class="auth-btn" onclick="loginUser()">Sign in</button>
     <p style="text-align:center; margin-top:15px;">
-      New here? <a href="#" onclick="goToRegister()" style="color:#1e40af; text-decoration:none;">Create an account</a>
+      New here? <a href="#" onclick="goToRegister()" style="color:#1e40af;">Create an account</a>
     </p>
   </div>
 
-  <!-- REGISTER PAGE -->
+  <!-- ==================== REGISTER PAGE ==================== -->
   <div id="registerPage" class="auth-page" style="display:none;">
     <h2>Create Account</h2>
     <div class="form-group">
@@ -111,19 +114,18 @@
     <button class="auth-btn" onclick="registerUser()">Create Account</button>
   </div>
 
-  <!-- DASHBOARD PAGE -->
+  <!-- ==================== DASHBOARD PAGE ==================== -->
   <div id="dashboardPage" class="container dashboard">
     <header>
       <div class="logo">
         <div class="logo-circle">L</div>
         <span class="logo-text">LogginSuite</span>
       </div>
-      <button class="logout-btn" onclick="logoutUser()">Logout</button>
     </header>
 
     <div class="welcome" id="welcomeText">Welcome back!</div>
 
-    <!-- Balance -->
+    <!-- Balance Card -->
     <div class="balance-card">
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <div>
@@ -150,18 +152,20 @@
 
     <!-- Rent Virtual Numbers -->
     <div class="section">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="section-header">
         <div>
           <h3>Rent Virtual Numbers</h3>
           <p style="color:#94a3b8; font-size:14px;">Get SMS verification codes instantly</p>
         </div>
-        <button onclick="alert('Feature coming soon!')" style="background:white; color:#1e40af; padding:8px 18px; border-radius:9999px; font-weight:700; border:none;">Rent Now →</button>
+        <button class="rent-btn" onclick="alert('Rent Virtual Numbers coming soon!')">Rent Now →</button>
       </div>
     </div>
 
     <!-- Social Accounts -->
     <div class="section">
-      <h3>👥 Social Accounts</h3>
+      <div class="section-header">
+        <h3>👥 Social Accounts</h3>
+      </div>
       <div style="text-align:center; padding:20px 0;">
         <div style="font-size:48px; font-weight:800;">0</div>
         <div style="color:#94a3b8;">purchased</div>
@@ -180,9 +184,9 @@
   </div>
 
   <!-- Loading Overlay -->
-  <div id="loadingOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,0.85);display:none;justify-content:center;align-items:center;z-index:300;flex-direction:column;">
-    <div style="width:50px;height:50px;border:5px solid #334155;border-top:5px solid #6366f1;border-radius:50%;animation:spin 1s linear infinite;"></div>
-    <p style="color:white;margin-top:15px;">Please wait...</p>
+  <div id="loadingOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); display:none; justify-content:center; align-items:center; z-index:300; flex-direction:column;">
+    <div style="width:50px; height:50px; border:5px solid #334155; border-top:5px solid #6366f1; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    <p style="color:white; margin-top:15px;">Please wait...</p>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -208,7 +212,7 @@
       overlay.style.display = 'flex';
       setTimeout(() => {
         overlay.style.display = 'none';
-        if (callback) callback();
+        callback();
       }, 1500);
     }
 
@@ -217,6 +221,7 @@
       document.getElementById('loginPage').style.display = 'none';
       document.getElementById('registerPage').style.display = 'none';
       document.getElementById('dashboardPage').style.display = 'none';
+
       document.getElementById(page).style.display = 'block';
     }
 
@@ -225,15 +230,16 @@
 
     // Register with Username
     function registerUser() {
-      const username = document.getElementById('regUsername').value.trim();
+      const username = document.getElementById('regUsername').value;
       const email = document.getElementById('regEmail').value;
       const password = document.getElementById('regPassword').value;
 
-      if (!username) return alert("Please enter a username");
+      if (!username) return alert("Please choose a username");
 
       showLoadingThen(() => {
         auth.createUserWithEmailAndPassword(email, password)
           .then((userCredential) => {
+            // Save username in Firestore
             return db.collection("users").doc(userCredential.user.uid).set({
               username: username,
               email: email,
@@ -266,29 +272,25 @@
     function loadUserDashboard(user) {
       db.collection("users").doc(user.uid).get()
         .then(doc => {
-          let name = user.email.split('@')[0];
+          let displayName = "User";
           if (doc.exists && doc.data().username) {
-            name = doc.data().username;
+            displayName = doc.data().username;
+          } else {
+            displayName = user.email.split('@')[0];
           }
-          document.getElementById('welcomeText').innerHTML = `Welcome back, <strong>${name}</strong>`;
+
+          document.getElementById('welcomeText').innerHTML = 
+            `Welcome back, <strong>${displayName}</strong>`;
+
           showPage('dashboardPage');
         });
-    }
-
-    // Logout
-    function logoutUser() {
-      showLoadingThen(() => {
-        auth.signOut().then(() => {
-          showPage('homePage');
-        });
-      });
     }
 
     function addFunds() {
       alert("Add Funds feature coming soon!");
     }
 
-    // Auto login check
+    // Auto check if user is already logged in
     auth.onAuthStateChanged(user => {
       if (user) {
         loadUserDashboard(user);
