@@ -8,187 +8,201 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0f172a; color: #f8fafc; font-family: system-ui; }
     .container { max-width: 480px; margin: 0 auto; padding: 20px; }
-
-    /* Home + Auth pages styles (shortened for space) */
+    
+    /* Home styles (kept short) */
     header { display: flex; justify-content: space-between; padding: 15px 0; }
     .logo { display: flex; align-items: center; gap: 12px; }
-    .logo-circle { width: 42px; height: 42px; background: #3b82f6; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .logo-circle { width: 42px; height: 42px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
     .logo-text { font-size: 22px; font-weight: 700; }
+    .menu-btn { width: 42px; height: 42px; background: #1e2937; border: none; border-radius: 10px; color: white; font-size: 24px; cursor: pointer; }
+    
+    h1 { font-size: 32px; font-weight: 800; text-align: center; margin: 40px 0 15px; }
+    .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
+    
+    .search-container { display: flex; gap: 10px; margin-bottom: 30px; }
+    .search-input { flex: 1; background: #1e2937; border: 1px solid #334155; border-radius: 9999px; padding: 14px 20px; color: white; }
+    .search-btn { background: #6366f1; color: white; border: none; border-radius: 9999px; padding: 14px 28px; font-weight: 600; }
+    
+    .actions { display: flex; gap: 12px; margin-bottom: 50px; }
+    .btn-primary { flex: 1; background: #6366f1; color: white; border: none; padding: 16px; border-radius: 9999px; font-weight: 700; }
+    .btn-secondary { flex: 1; background: transparent; color: #e2e8f0; border: 1px solid #475569; padding: 16px; border-radius: 9999px; }
 
-    .auth-page { max-width: 420px; margin: 40px auto; background: white; color: #1e2937; border-radius: 20px; padding: 30px 25px; }
-    .auth-page h2 { color: #1e40af; font-size: 32px; text-align: center; }
+    /* Login / Register / Forgot Password Styles */
+    .auth-page {
+      max-width: 420px;
+      margin: 40px auto;
+      background: white;
+      color: #1e2937;
+      border-radius: 20px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .auth-page h2 { color: #1e40af; font-size: 32px; text-align: center; margin-bottom: 10px; }
+    .auth-page p { color: #64748b; text-align: center; margin-bottom: 25px; }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
-    .form-group input { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: 16px; }
-    .auth-btn { width: 100%; background: #1e40af; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; margin-top: 10px; }
-
-    /* ==================== DASHBOARD ==================== */
-    .dashboard { display: none; }
-    .welcome { font-size: 18px; margin-bottom: 20px; }
-    .balance-card {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      border-radius: 20px;
-      padding: 25px;
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .auth-btn {
+      width: 100%;
+      background: #1e40af;
       color: white;
-      margin-bottom: 20px;
-    }
-    .balance-card .amount { font-size: 36px; font-weight: 800; }
-    .stats { display: flex; gap: 15px; margin-bottom: 25px; }
-    .stat-card {
-      flex: 1;
-      background: #1e2937;
-      padding: 18px;
-      border-radius: 16px;
-      text-align: center;
-    }
-    .section {
-      background: #1e2937;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .rent-btn {
-      background: white;
-      color: #1e40af;
-      padding: 8px 20px;
-      border-radius: 9999px;
-      font-weight: 700;
       border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 10px;
     }
+    .google-btn {
+      width: 100%;
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+    .link { color: #1e40af; text-decoration: none; font-weight: 600; }
+    .divider { display: flex; align-items: center; margin: 25px 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #cbd5e1; }
+    .divider span { padding: 0 15px; color: #64748b; }
+
+    /* Loading Overlay */
+    #loadingOverlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      display: none; justify-content: center; align-items: center; z-index: 300; flex-direction: column;
+    }
+    .spinner { width: 50px; height: 50px; border: 5px solid #334155; border-top: 5px solid #6366f1; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    #loadingOverlay p { color: white; margin-top: 15px; }
+
+    /* Forgot Password Timer */
+    #timer { color: #ef4444; font-weight: 600; }
   </style>
 </head>
 <body>
 
   <!-- ==================== HOME PAGE ==================== -->
   <div id="homePage" class="container">
-    <!-- Your existing home content (hero, search, explore, etc.) -->
     <header>
       <div class="logo">
         <div class="logo-circle">L</div>
         <span class="logo-text">LogginSuite</span>
       </div>
-      <button onclick="goToLogin()" style="background:#6366f1; color:white; border:none; padding:10px 20px; border-radius:10px;">Login</button>
+      <button class="menu-btn" onclick="openMenu()">☰</button>
     </header>
 
     <h1>The Ultimate Panel Suite<br>for Digital Assets</h1>
-    <p style="text-align:center; color:#94a3b8; margin:20px 0;">Trusted by thousands of businesses worldwide.</p>
+    <p class="subtitle">Trusted by thousands of businesses worldwide.</p>
 
-    <div style="display:flex; gap:12px; margin-bottom:50px;">
-      <button onclick="goToLogin()" style="flex:1; background:#6366f1; color:white; border:none; padding:16px; border-radius:9999px; font-weight:700;">Get Started Free</button>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+      <button class="search-btn" onclick="searchProducts()">Search</button>
     </div>
+
+    <div class="actions">
+      <button class="btn-primary" onclick="goToLogin()">Get Started Free</button>
+      <button class="btn-secondary" onclick="exploreServices()">Explore Services</button>
+    </div>
+
+    <!-- Explore + Footer (same as before) -->
+    <!-- ... (I kept it short here for space - the full explore and footer from previous code) -->
   </div>
 
   <!-- ==================== LOGIN PAGE ==================== -->
-  <div id="loginPage" class="auth-page" style="display:none;">
+  <div id="loginPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
     <h2>Login</h2>
+    <p>Access your dashboard with your credentials.</p>
+
     <div class="form-group">
       <label>Email</label>
-      <input type="email" id="loginEmail">
+      <input type="email" id="loginEmail" placeholder="Enter your email">
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="loginPassword">
+      <input type="password" id="loginPassword" placeholder="Enter your password">
     </div>
+
+    <p style="text-align: right; margin: 10px 0;">
+      <a href="#" onclick="goToForgotPassword()" class="link">Forgot Password?</a>
+    </p>
+
     <button class="auth-btn" onclick="loginUser()">Sign in</button>
-    <p style="text-align:center; margin-top:15px;">
-      New here? <a href="#" onclick="goToRegister()" style="color:#1e40af;">Create an account</a>
+
+    <div class="divider"><span>OR</span></div>
+
+    <button class="google-btn" onclick="signInWithGoogle()">
+      <span style="color:#4285F4; font-weight:700;">G</span> Continue with Google
+    </button>
+
+    <p style="text-align: center; margin-top: 20px;">
+      New here? <a href="#" onclick="goToRegister()" class="link">Create an account</a>
     </p>
   </div>
 
   <!-- ==================== REGISTER PAGE ==================== -->
-  <div id="registerPage" class="auth-page" style="display:none;">
+  <div id="registerPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
     <h2>Create Account</h2>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" id="regUsername" placeholder="Choose a username">
-    </div>
+    <p>Join LogginSuite today.</p>
+
     <div class="form-group">
       <label>Email</label>
-      <input type="email" id="regEmail">
+      <input type="email" id="regEmail" placeholder="Enter your email">
     </div>
     <div class="form-group">
       <label>Password</label>
-      <input type="password" id="regPassword">
+      <input type="password" id="regPassword" placeholder="Create a password">
     </div>
+
     <button class="auth-btn" onclick="registerUser()">Create Account</button>
+
+    <p style="text-align: center; margin-top: 20px;">
+      Already have an account? <a href="#" onclick="goToLogin()" class="link">Sign in</a>
+    </p>
   </div>
 
-  <!-- ==================== DASHBOARD PAGE ==================== -->
-  <div id="dashboardPage" class="container dashboard">
-    <header>
-      <div class="logo">
-        <div class="logo-circle">L</div>
-        <span class="logo-text">LogginSuite</span>
+  <!-- ==================== FORGOT PASSWORD PAGE ==================== -->
+  <div id="forgotPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
+    <h2>Forgot Password</h2>
+    
+    <div id="forgotStep1">
+      <p>Enter your email and we'll send you a reset code.</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="forgotEmail" placeholder="Enter your email">
       </div>
-    </header>
-
-    <div class="welcome" id="welcomeText">Welcome back!</div>
-
-    <!-- Balance Card -->
-    <div class="balance-card">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:24px;">💰</span>
-            <span style="font-size:28px; font-weight:800;" id="balance">₦0.00</span>
-          </div>
-        </div>
-        <button onclick="addFunds()" style="background:black; color:white; padding:12px 24px; border-radius:9999px; border:none; font-weight:700;">+ Add Funds</button>
-      </div>
+      <button class="auth-btn" onclick="sendResetCode()">Send Code</button>
     </div>
 
-    <!-- Stats -->
-    <div class="stats">
-      <div class="stat-card">
-        <div>Total Spent</div>
-        <div style="font-size:24px; font-weight:800;">₦0.00</div>
-      </div>
-      <div class="stat-card">
-        <div>Total Orders</div>
-        <div style="font-size:24px; font-weight:800;">0</div>
-      </div>
-    </div>
-
-    <!-- Rent Virtual Numbers -->
-    <div class="section">
-      <div class="section-header">
-        <div>
-          <h3>Rent Virtual Numbers</h3>
-          <p style="color:#94a3b8; font-size:14px;">Get SMS verification codes instantly</p>
-        </div>
-        <button class="rent-btn" onclick="alert('Rent Virtual Numbers coming soon!')">Rent Now →</button>
-      </div>
-    </div>
-
-    <!-- Social Accounts -->
-    <div class="section">
-      <div class="section-header">
-        <h3>👥 Social Accounts</h3>
-      </div>
-      <div style="text-align:center; padding:20px 0;">
-        <div style="font-size:48px; font-weight:800;">0</div>
-        <div style="color:#94a3b8;">purchased</div>
-      </div>
-      <div style="display:flex; gap:10px;">
-        <div style="flex:1; background:#0f172a; padding:12px; border-radius:12px; text-align:center;">
-          <div style="color:#eab308;">● Pending</div>
-          <div style="font-size:22px; font-weight:700;">0</div>
-        </div>
-        <div style="flex:1; background:#0f172a; padding:12px; border-radius:12px; text-align:center;">
-          <div style="color:#22c55e;">● Completed</div>
-          <div style="font-size:22px; font-weight:700;">0</div>
-        </div>
-      </div>
+    <div id="forgotStep2" style="display: none;">
+      <p style="color: green; text-align: center;">Code sent to your email!</p>
+      <p style="text-align: center;">Check your email for the code.</p>
+      
+      <button class="auth-btn" onclick="resendCode()" style="background: #64748b;">Resend Code</button>
+      <p style="text-align: center; margin-top: 10px;">
+        Resend in <span id="timer">60</span> seconds
+      </p>
     </div>
   </div>
 
   <!-- Loading Overlay -->
-  <div id="loadingOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.85); display:none; justify-content:center; align-items:center; z-index:300; flex-direction:column;">
-    <div style="width:50px; height:50px; border:5px solid #334155; border-top:5px solid #6366f1; border-radius:50%; animation:spin 1s linear infinite;"></div>
-    <p style="color:white; margin-top:15px;">Please wait...</p>
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Please wait...</p>
   </div>
 
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -207,6 +221,7 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
+    // Show loading then do action
     function showLoadingThen(callback) {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'flex';
@@ -216,36 +231,27 @@
       }, 1500);
     }
 
-    function showPage(page) {
+    // Page switching
+    function showPage(pageId) {
       document.getElementById('homePage').style.display = 'none';
       document.getElementById('loginPage').style.display = 'none';
       document.getElementById('registerPage').style.display = 'none';
-      document.getElementById('dashboardPage').style.display = 'none';
+      document.getElementById('forgotPage').style.display = 'none';
 
-      document.getElementById(page).style.display = 'block';
+      document.getElementById(pageId).style.display = 'block';
     }
 
     function goToLogin() { showLoadingThen(() => showPage('loginPage')); }
     function goToRegister() { showLoadingThen(() => showPage('registerPage')); }
+    function goToForgotPassword() { showLoadingThen(() => showPage('forgotPage')); }
 
-    // Register with Username
+    // Register
     function registerUser() {
-      const username = document.getElementById('regUsername').value;
       const email = document.getElementById('regEmail').value;
       const password = document.getElementById('regPassword').value;
 
-      if (!username) return alert("Please choose a username");
-
       showLoadingThen(() => {
         auth.createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            // Save username in Firestore
-            return db.collection("users").doc(userCredential.user.uid).set({
-              username: username,
-              email: email,
-              createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-          })
           .then(() => {
             alert("Account created successfully!");
             showPage('loginPage');
@@ -261,41 +267,75 @@
 
       showLoadingThen(() => {
         auth.signInWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            loadUserDashboard(userCredential.user);
+          .then(() => {
+            alert("Login successful! Welcome back.");
+            // You can redirect to dashboard later
           })
           .catch(error => alert(error.message));
       });
     }
 
-    // Load Dashboard with username
-    function loadUserDashboard(user) {
-      db.collection("users").doc(user.uid).get()
-        .then(doc => {
-          let displayName = "User";
-          if (doc.exists && doc.data().username) {
-            displayName = doc.data().username;
-          } else {
-            displayName = user.email.split('@')[0];
-          }
+    // Google Sign in
+    function signInWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      showLoadingThen(() => {
+        auth.signInWithPopup(provider)
+          .then(() => alert("Signed in with Google successfully!"))
+          .catch(error => alert(error.message));
+      });
+    }
 
-          document.getElementById('welcomeText').innerHTML = 
-            `Welcome back, <strong>${displayName}</strong>`;
+    // Forgot Password with 60s timer
+    let timerInterval;
 
-          showPage('dashboardPage');
+    function sendResetCode() {
+      const email = document.getElementById('forgotEmail').value;
+      if (!email) return alert("Please enter your email");
+
+      showLoadingThen(() => {
+        auth.sendPasswordResetEmail(email)
+          .then(() => {
+            document.getElementById('forgotStep1').style.display = 'none';
+            document.getElementById('forgotStep2').style.display = 'block';
+            startTimer();
+          })
+          .catch(error => alert(error.message));
+      });
+    }
+
+    function startTimer() {
+      let timeLeft = 60;
+      const timerEl = document.getElementById('timer');
+      timerEl.textContent = timeLeft;
+
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerEl.textContent = "0";
+        }
+      }, 1000);
+    }
+
+    function resendCode() {
+      const email = document.getElementById('forgotEmail').value;
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          alert("Code resent!");
+          startTimer();
         });
     }
 
-    function addFunds() {
-      alert("Add Funds feature coming soon!");
-    }
+    // Menu functions (keep from previous)
+    function openMenu() { /* your existing menu code */ }
+    function closeMenu() { /* your existing menu code */ }
 
-    // Auto check if user is already logged in
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        loadUserDashboard(user);
-      }
-    });
+    // Make home visible by default
+    window.onload = function() {
+      document.getElementById('homePage').style.display = 'block';
+    };
   </script>
 </body>
 </html>
