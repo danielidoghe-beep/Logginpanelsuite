@@ -175,6 +175,24 @@
     font-size:18px;
     margin:18px 0;
 }
+ .close-auth{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:10px;
+    background:#e5e7eb;
+    color:#111827;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.auth-page{
+    position:relative;
+}
   </style>
 </head>
 <body>
@@ -262,6 +280,10 @@
 
   <!-- LOGIN PAGE -->
   <div id="loginPage" class="auth-page">
+
+    <button class="close-auth" onclick="showPage('homePage')">✕</button>
+
+    <h2>Login</h2>
     <h2>Login</h2>
     <div class="form-group"><label>Email</label><input type="email" id="loginEmail"></div>
     <div class="form-group"><label>Password</label><input type="password" id="loginPassword"></div>
@@ -270,7 +292,11 @@
   </div>
 
   <!-- REGISTER PAGE -->
-  <div id="registerPage" class="auth-page">
+ <div id="registerPage" class="auth-page">
+
+    <button class="close-auth" onclick="showPage('homePage')">✕</button>
+
+    <h2>Create Account</h2> 
     <h2>Create Account</h2>
     <div class="form-group"><label>Username</label><input type="text" id="regUsername"></div>
     <div class="form-group"><label>Email</label><input type="email" id="regEmail"></div>
