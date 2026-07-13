@@ -587,13 +587,25 @@ function googleLogin(){
       });
     }
 
-    auth.onAuthStateChanged(user => {
-      if (user) loadDashboard(user);
-    });
+    auth.getRedirectResult()
+.then((result) => {
 
-    window.onload = () => {
-      document.getElementById('homePage').style.display = 'block';
-    };
+    if (result.user) {
+        loadDashboard(result.user);
+    }
+
+})
+.catch((error) => {
+    alert(error.message);
+});
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        loadDashboard(user);
+    } else {
+        showPage('homePage');
+    }
+});
  auth.getRedirectResult()
 .then((result) => {
 
