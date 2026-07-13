@@ -3,98 +3,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LogginSuite</title>
+  <title>LogginSuite - The Ultimate Panel Suite</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0f172a; color: #f8fafc; font-family: system-ui; }
-    .container { max-width: 480px; margin: 0 auto; padding: 20px; }
-    
-    /* Home styles (kept short) */
-    header { display: flex; justify-content: space-between; padding: 15px 0; }
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo-circle { width: 42px; height: 42px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
-    .logo-text { font-size: 22px; font-weight: 700; }
-    .menu-btn { width: 42px; height: 42px; background: #1e2937; border: none; border-radius: 10px; color: white; font-size: 24px; cursor: pointer; }
-    
-    h1 { font-size: 32px; font-weight: 800; text-align: center; margin: 40px 0 15px; }
-    .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
-    
-    .search-container { display: flex; gap: 10px; margin-bottom: 30px; }
-    .search-input { flex: 1; background: #1e2937; border: 1px solid #334155; border-radius: 9999px; padding: 14px 20px; color: white; }
-    .search-btn { background: #6366f1; color: white; border: none; border-radius: 9999px; padding: 14px 28px; font-weight: 600; }
-    
-    .actions { display: flex; gap: 12px; margin-bottom: 50px; }
-    .btn-primary { flex: 1; background: #6366f1; color: white; border: none; padding: 16px; border-radius: 9999px; font-weight: 700; }
-    .btn-secondary { flex: 1; background: transparent; color: #e2e8f0; border: 1px solid #475569; padding: 16px; border-radius: 9999px; }
-
-    /* Login / Register / Forgot Password Styles */
-    .auth-page {
-      max-width: 420px;
-      margin: 40px auto;
-      background: white;
-      color: #1e2937;
-      border-radius: 20px;
-      padding: 30px 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .auth-page h2 { color: #1e40af; font-size: 32px; text-align: center; margin-bottom: 10px; }
-    .auth-page p { color: #64748b; text-align: center; margin-bottom: 25px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; margin-bottom: 6px; font-weight: 600; }
-    .form-group input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      font-size: 16px;
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px;
     }
-    .auth-btn {
-      width: 100%;
-      background: #1e40af;
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 17px;
-      font-weight: 700;
-      margin-top: 10px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
     }
-    .google-btn {
-      width: 100%;
-      background: white;
-      border: 1px solid #cbd5e1;
-      padding: 14px;
-      border-radius: 12px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-circle {
+      width: 42px;
+      height: 42px;
+      background: #3b82f6;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      font-weight: 600;
-      margin-top: 15px;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
     }
-    .link { color: #1e40af; text-decoration: none; font-weight: 600; }
-    .divider { display: flex; align-items: center; margin: 25px 0; }
-    .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #cbd5e1; }
-    .divider span { padding: 0 15px; color: #64748b; }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      background: #1e2937;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
 
-    /* Loading Overlay */
+    /* Hamburger Menu */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+    }
+    .side-menu.active {
+      display: flex;
+    }
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    .close-btn {
+      width: 42px;
+      height: 42px;
+      background: #1e2937;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .menu-content {
+      padding: 20px;
+      flex: 1;
+    }
+    .menu-content a {
+      display: block;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid #334155;
+    }
+    .menu-get-started {
+      margin: 30px 20px 40px;
+      padding: 18px;
+      background: #6366f1;
+      color: white;
+      text-align: center;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    h1 { font-size: 32px; font-weight: 800; text-align: center; margin: 40px 0 15px; }
+    .subtitle { text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
+    .search-container { display: flex; gap: 10px; margin-bottom: 30px; }
+    .search-input { flex: 1; background: #1e2937; border: 1px solid #334155; border-radius: 9999px; padding: 14px 20px; color: white; font-size: 16px; }
+    .search-btn { background: #6366f1; color: white; border: none; border-radius: 9999px; padding: 14px 28px; font-weight: 600; cursor: pointer; }
+    .trending-label { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 12px; }
+    .trending { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 35px; }
+    .pill { background: #1e2937; color: #e2e8f0; padding: 8px 18px; border-radius: 9999px; font-size: 14px; cursor: pointer; border: 1px solid #334155; }
+    .actions { display: flex; gap: 12px; margin-bottom: 50px; }
+    .btn-primary { flex: 1; background: #6366f1; color: white; border: none; padding: 16px; border-radius: 9999px; font-weight: 700; cursor: pointer; }
+    .btn-secondary { flex: 1; background: transparent; color: #e2e8f0; border: 1px solid #475569; padding: 16px; border-radius: 9999px; font-weight: 600; cursor: pointer; }
+
+    .explore-section { margin-bottom: 50px; }
+    .explore-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 10px; }
+    .explore-subtitle { text-align: center; color: #94a3b8; font-size: 15px; margin-bottom: 30px; }
+    .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .market-card { background: #1e2937; border-radius: 20px; padding: 22px 18px; text-align: center; cursor: pointer; }
+    .market-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
+    .market-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .market-card p { font-size: 13px; color: #64748b; }
+
+    .cta-banner { background: #4c1d95; border-radius: 24px; padding: 35px 25px; text-align: center; margin-bottom: 50px; }
+    .cta-banner h2 { font-size: 24px; font-weight: 800; margin-bottom: 15px; }
+    .cta-banner p { color: #c4b5fd; font-size: 15px; margin-bottom: 25px; }
+    .cta-btn { background: #1e2937; color: white; border: none; padding: 14px 40px; border-radius: 9999px; font-weight: 700; cursor: pointer; }
+
+    .floating-telegram { position: fixed; bottom: 100px; right: 20px; width: 56px; height: 56px; background: #0ea5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; z-index: 100; }
+
+    .footer { padding: 40px 20px 30px; border-top: 1px solid #334155; margin-top: 30px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .footer-desc { color: #94a3b8; font-size: 15px; margin-bottom: 30px; }
+    .footer-section { margin-bottom: 30px; }
+    .footer-section h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .footer-section a { display: block; color: #64748b; text-decoration: none; font-size: 15px; margin-bottom: 10px; }
+    .footer-bottom { text-align: center; margin-top: 20px; }
+    .footer-bottom span { background: #1e2937; padding: 8px 20px; border-radius: 9999px; font-size: 14px; }
+
+    .demo-section { max-width: 480px; margin: 40px auto; padding: 25px; background: #1e2937; border-radius: 20px; }
+    .message-input { width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 14px; color: white; font-size: 16px; margin-bottom: 12px; }
+    .send-btn { width: 100%; background: #6366f1; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+    .messages-list { margin-top: 20px; max-height: 200px; overflow-y: auto; }
+    .message-item { background: #0f172a; padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 15px; }
+
+    /* === LOADING OVERLAY === */
     #loadingOverlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(15, 23, 42, 0.85);
-      display: none; justify-content: center; align-items: center; z-index: 300; flex-direction: column;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 300;
+      flex-direction: column;
     }
-    .spinner { width: 50px; height: 50px; border: 5px solid #334155; border-top: 5px solid #6366f1; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    #loadingOverlay p { color: white; margin-top: 15px; }
-
-    /* Forgot Password Timer */
-    #timer { color: #ef4444; font-weight: 600; }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #334155;
+      border-top: 5px solid #6366f1;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #loadingOverlay p {
+      margin-top: 20px;
+      color: #94a3b8;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
-
-  <!-- ==================== HOME PAGE ==================== -->
-  <div id="homePage" class="container">
+  <div class="container">
+    <!-- Header -->
     <header>
       <div class="logo">
         <div class="logo-circle">L</div>
@@ -103,110 +196,129 @@
       <button class="menu-btn" onclick="openMenu()">☰</button>
     </header>
 
+    <!-- Hero -->
     <h1>The Ultimate Panel Suite<br>for Digital Assets</h1>
     <p class="subtitle">Trusted by thousands of businesses worldwide.</p>
 
+    <!-- Search -->
     <div class="search-container">
       <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
       <button class="search-btn" onclick="searchProducts()">Search</button>
     </div>
 
+    <!-- Trending -->
+    <p class="trending-label">Trending:</p>
+    <div class="trending">
+      <span class="pill" onclick="selectTrending(this)">WhatsApp</span>
+      <span class="pill" onclick="selectTrending(this)">Telegram Premium</span>
+      <span class="pill" onclick="selectTrending(this)">US Number</span>
+      <span class="pill" onclick="selectTrending(this)">Instagram Likes</span>
+    </div>
+
+    <!-- Action Buttons -->
     <div class="actions">
-      <button class="btn-primary" onclick="goToLogin()">Get Started Free</button>
+      <button class="btn-primary" onclick="handleGetStarted()">Get Started Free</button>
       <button class="btn-secondary" onclick="exploreServices()">Explore Services</button>
     </div>
 
-    <!-- Explore + Footer (same as before) -->
-    <!-- ... (I kept it short here for space - the full explore and footer from previous code) -->
-  </div>
-
-  <!-- ==================== LOGIN PAGE ==================== -->
-  <div id="loginPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
-    <h2>Login</h2>
-    <p>Access your dashboard with your credentials.</p>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="loginEmail" placeholder="Enter your email">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="loginPassword" placeholder="Enter your password">
-    </div>
-
-    <p style="text-align: right; margin: 10px 0;">
-      <a href="#" onclick="goToForgotPassword()" class="link">Forgot Password?</a>
-    </p>
-
-    <button class="auth-btn" onclick="loginUser()">Sign in</button>
-
-    <div class="divider"><span>OR</span></div>
-
-    <button class="google-btn" onclick="signInWithGoogle()">
-      <span style="color:#4285F4; font-weight:700;">G</span> Continue with Google
-    </button>
-
-    <p style="text-align: center; margin-top: 20px;">
-      New here? <a href="#" onclick="goToRegister()" class="link">Create an account</a>
-    </p>
-  </div>
-
-  <!-- ==================== REGISTER PAGE ==================== -->
-  <div id="registerPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
-    <h2>Create Account</h2>
-    <p>Join LogginSuite today.</p>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="regEmail" placeholder="Enter your email">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" id="regPassword" placeholder="Create a password">
-    </div>
-
-    <button class="auth-btn" onclick="registerUser()">Create Account</button>
-
-    <p style="text-align: center; margin-top: 20px;">
-      Already have an account? <a href="#" onclick="goToLogin()" class="link">Sign in</a>
-    </p>
-  </div>
-
-  <!-- ==================== FORGOT PASSWORD PAGE ==================== -->
-  <div id="forgotPage" class="auth-page" style="display: none; max-width: 420px; margin: 40px auto;">
-    <h2>Forgot Password</h2>
-    
-    <div id="forgotStep1">
-      <p>Enter your email and we'll send you a reset code.</p>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="forgotEmail" placeholder="Enter your email">
+    <!-- Explore Market Sectors -->
+    <div class="explore-section">
+      <h2 class="explore-title">Explore Market Sectors</h2>
+      <p class="explore-subtitle">Everything you need to scale your digital presence.<br>Browse our comprehensive catalog of verified assets.</p>
+      <div class="market-grid">
+        <div class="market-card" onclick="showCollection('Social Accounts')"><div class="market-icon" style="background:#f59e0b;">🧑‍🤝‍🧑</div><h3>Social Accounts</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Virtual Numbers')"><div class="market-icon" style="background:#3b82f6;">📞</div><h3>Virtual Numbers</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('SMM Orders')"><div class="market-icon" style="background:#8b5cf6;">📈</div><h3>SMM Orders</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Software Logs')"><div class="market-icon" style="background:#6366f1;">💻</div><h3>Software Logs</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Proxy')"><div class="market-icon" style="background:#ef4444;">🔗</div><h3>Proxy</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('E-SIM')"><div class="market-icon" style="background:#14b8a6;">📱</div><h3>E-SIM</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('Streaming')"><div class="market-icon" style="background:#f59e0b;">📺</div><h3>Streaming</h3><p>Browse Collection</p></div>
+        <div class="market-card" onclick="showCollection('VPN & Security')"><div class="market-icon" style="background:#8b5cf6;">🛡️</div><h3>VPN & Security</h3><p>Browse Collection</p></div>
       </div>
-      <button class="auth-btn" onclick="sendResetCode()">Send Code</button>
     </div>
 
-    <div id="forgotStep2" style="display: none;">
-      <p style="color: green; text-align: center;">Code sent to your email!</p>
-      <p style="text-align: center;">Check your email for the code.</p>
-      
-      <button class="auth-btn" onclick="resendCode()" style="background: #64748b;">Resend Code</button>
-      <p style="text-align: center; margin-top: 10px;">
-        Resend in <span id="timer">60</span> seconds
-      </p>
+    <!-- Ready to get started? -->
+    <div class="cta-banner">
+      <h2>Ready to get started?</h2>
+      <p>Join thousands of users leveraging our platform for secure verification and growth.</p>
+      <button class="cta-btn" onclick="handleGetStarted()">Get Started →</button>
     </div>
   </div>
 
-  <!-- Loading Overlay -->
+  <!-- Floating Telegram -->
+  <div class="floating-telegram" onclick="openTelegram()">✈️</div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-logo">
+      <div class="logo-circle" style="width:36px;height:36px;font-size:18px;">L</div>
+      <span style="font-weight:700;font-size:20px;">LogginSuite</span>
+    </div>
+    <p class="footer-desc">Your trusted platform for virtual numbers and social media marketing services.</p>
+
+    <div class="footer-section"><h4>SERVICES</h4>
+      <a href="#" onclick="showCollection('Virtual Numbers')">Virtual Numbers</a>
+      <a href="#" onclick="showCollection('SMM Services')">SMM Services</a>
+      <a href="#" onclick="showCollection('Social Accounts')">Social Accounts</a>
+    </div>
+
+    <div class="footer-section"><h4>SUPPORT</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Documentation</a>
+      <a href="#">Status Page</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="footer-section"><h4>LEGAL</h4>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Refund Policy</a>
+    </div>
+
+    <div class="footer-bottom"><span>logginsuite.com</span></div>
+  </div>
+
+  <!-- Firebase Demo -->
+  <div class="demo-section">
+    <h3>Try Sending a Message (Live Firebase)</h3>
+    <input type="text" id="messageInput" class="message-input" placeholder="Type your message...">
+    <button class="send-btn" onclick="sendMessage()">Send Message</button>
+    <div class="messages-list" id="messages"></div>
+  </div>
+
+  <!-- ==================== HAMBURGER MENU ==================== -->
+  <div id="sideMenu" class="side-menu">
+    <div class="menu-header">
+      <div class="logo">
+        <div class="logo-circle">L</div>
+        <span class="logo-text">LogginSuite</span>
+      </div>
+      <button class="close-btn" onclick="closeMenu()">×</button>
+    </div>
+
+    <div class="menu-content">
+      <a href="#" onclick="closeMenu(); showCollection('Services')">Services</a>
+      <a href="#" onclick="closeMenu()">About</a>
+      <a href="#" onclick="closeMenu()">Contact</a>
+      <a href="#" onclick="closeMenu(); handleSignIn()">Sign In</a>
+    </div>
+
+    <div class="menu-get-started" onclick="closeMenu(); handleGetStarted()">
+      Get Started
+    </div>
+  </div>
+
+  <!-- ==================== LOADING OVERLAY ==================== -->
   <div id="loadingOverlay">
     <div class="spinner"></div>
     <p>Please wait...</p>
   </div>
 
-  <!-- Firebase -->
+  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-
+  
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyDc7oa9Rxai_vBGuNV-X1emXdo_ryOMj4c",
@@ -214,128 +326,83 @@
       projectId: "logginpanelsuite",
       storageBucket: "logginpanelsuite.firebasestorage.app",
       messagingSenderId: "291135844505",
-      appId: "1:291135844505:web:2ecf44de31f3a494630808"
+      appId: "1:291135844505:web:2ecf44de31f3a494630808",
+      measurementId: "G-5G5MG66LB4"
     };
 
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // Show loading then do action
+    // ==================== LOADING FUNCTION ====================
     function showLoadingThen(callback) {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'flex';
+
       setTimeout(() => {
         overlay.style.display = 'none';
-        callback();
-      }, 1500);
+        if (callback) callback();
+      }, 1500); // 1.5 seconds
     }
 
-    // Page switching
-    function showPage(pageId) {
-      document.getElementById('homePage').style.display = 'none';
-      document.getElementById('loginPage').style.display = 'none';
-      document.getElementById('registerPage').style.display = 'none';
-      document.getElementById('forgotPage').style.display = 'none';
-
-      document.getElementById(pageId).style.display = 'block';
-    }
-
-    function goToLogin() { showLoadingThen(() => showPage('loginPage')); }
-    function goToRegister() { showLoadingThen(() => showPage('registerPage')); }
-    function goToForgotPassword() { showLoadingThen(() => showPage('forgotPage')); }
-
-    // Register
-    function registerUser() {
-      const email = document.getElementById('regEmail').value;
-      const password = document.getElementById('regPassword').value;
-
+    // Get Started buttons now show loading first
+    function handleGetStarted() {
       showLoadingThen(() => {
-        auth.createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            alert("Account created successfully!");
-            showPage('loginPage');
-          })
-          .catch(error => alert(error.message));
+        document.getElementById('messageInput').focus();
       });
     }
 
-    // Login
-    function loginUser() {
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
-
+    // Sign In from menu
+    function handleSignIn() {
       showLoadingThen(() => {
-        auth.signInWithEmailAndPassword(email, password)
-          .then(() => {
-            alert("Login successful! Welcome back.");
-            // You can redirect to dashboard later
-          })
-          .catch(error => alert(error.message));
+        alert("Sign In feature coming soon!");
       });
     }
 
-    // Google Sign in
-    function signInWithGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      showLoadingThen(() => {
-        auth.signInWithPopup(provider)
-          .then(() => alert("Signed in with Google successfully!"))
-          .catch(error => alert(error.message));
+    // Menu Functions
+    function openMenu() {
+      document.getElementById('sideMenu').classList.add('active');
+    }
+    function closeMenu() {
+      document.getElementById('sideMenu').classList.remove('active');
+    }
+
+    function searchProducts() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) alert("Searching for: " + q);
+    }
+    function selectTrending(el) { document.getElementById('searchInput').value = el.textContent; }
+    function exploreServices() { document.querySelector('.explore-section').scrollIntoView({behavior:'smooth'}); }
+    function showCollection(name) { alert(name + " collection coming soon!"); }
+    function openTelegram() { alert("Telegram support coming soon!"); }
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const text = input.value.trim();
+      if (!text) return alert("Please type a message!");
+
+      db.collection("messages").add({
+        text: text,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        input.value = "";
+        loadMessages();
       });
     }
 
-    // Forgot Password with 60s timer
-    let timerInterval;
-
-    function sendResetCode() {
-      const email = document.getElementById('forgotEmail').value;
-      if (!email) return alert("Please enter your email");
-
-      showLoadingThen(() => {
-        auth.sendPasswordResetEmail(email)
-          .then(() => {
-            document.getElementById('forgotStep1').style.display = 'none';
-            document.getElementById('forgotStep2').style.display = 'block';
-            startTimer();
-          })
-          .catch(error => alert(error.message));
-      });
-    }
-
-    function startTimer() {
-      let timeLeft = 60;
-      const timerEl = document.getElementById('timer');
-      timerEl.textContent = timeLeft;
-
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        timerEl.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          timerEl.textContent = "0";
-        }
-      }, 1000);
-    }
-
-    function resendCode() {
-      const email = document.getElementById('forgotEmail').value;
-      auth.sendPasswordResetEmail(email)
-        .then(() => {
-          alert("Code resent!");
-          startTimer();
+    function loadMessages() {
+      const container = document.getElementById('messages');
+      container.innerHTML = "";
+      db.collection("messages").orderBy("timestamp", "desc").limit(8).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          const div = document.createElement('div');
+          div.className = 'message-item';
+          div.textContent = doc.data().text;
+          container.appendChild(div);
         });
+      });
     }
 
-    // Menu functions (keep from previous)
-    function openMenu() { /* your existing menu code */ }
-    function closeMenu() { /* your existing menu code */ }
-
-    // Make home visible by default
-    window.onload = function() {
-      document.getElementById('homePage').style.display = 'block';
-    };
+    window.onload = () => loadMessages();
   </script>
 </body>
 </html>
