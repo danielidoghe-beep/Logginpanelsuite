@@ -490,7 +490,7 @@ function googleLogin(){
 
     showLoadingThen(() => {
 
-        auth.signInWithPopup(googleProvider)
+        auth.signInWithRedirect(googleProvider)
         .then((result) => {
 
             const user = result.user;
@@ -594,6 +594,17 @@ function googleLogin(){
     window.onload = () => {
       document.getElementById('homePage').style.display = 'block';
     };
+ auth.getRedirectResult()
+.then((result) => {
+
+    if (result.user) {
+        loadDashboard(result.user);
+    }
+
+})
+.catch((error) => {
+    alert(error.message);
+});
   </script>
 </body>
 </html>
