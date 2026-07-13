@@ -148,6 +148,33 @@
     #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.85); display: none; justify-content: center; align-items: center; z-index: 300; flex-direction: column; }
     .spinner { width: 50px; height: 50px; border: 5px solid #334155; border-top: 5px solid #6366f1; border-radius: 50%; animation: spin 1s linear infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
+  .home-bottom-section{
+    margin-top:60px;
+    padding:20px 10px 60px;
+}
+
+.bottom-desc{
+    color:#94a3b8;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:45px;
+}
+
+.home-bottom-section h3{
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:2px;
+    color:#fff;
+    margin:35px 0 18px;
+}
+
+.home-bottom-section a{
+    display:block;
+    text-decoration:none;
+    color:#94a3b8;
+    font-size:18px;
+    margin:18px 0;
+}
   </style>
 </head>
 <body>
@@ -203,29 +230,34 @@
       <p>Join thousands of users leveraging our platform for secure verification and growth.</p>
       <button class="cta-btn" onclick="goToLogin()">Get Started →</button>
     </div>
-      <!-- Bottom Section from your screenshot -->
-    <div class="home-bottom-section">
-      <p style="color:#94a3b8; margin-bottom: 25px;">
-        Your trusted platform for virtual numbers and social media marketing services.
-      </p>
-          <!-- Bottom Section - Plain text like your screenshot -->
-    <div class="home-bottom-section">
-      <p>Your trusted platform for virtual numbers and social media marketing services.</p>
+      <div class="home-bottom-section">
 
-      <h3>SERVICES</h3>
-      <span class="item">Virtual Numbers</span>
-      <span class="item">SMM Services</span>
-      <span class="item">Social Accounts</span>
-      <span class="item">Proxy</span>
+  <p class="bottom-desc">
+    Your trusted platform for virtual numbers and social media marketing services.
+  </p>
 
-      <h3>SUPPORT</h3>
-      <span class="item">Help Center</span>
-      <span class="item">Contact Us</span>
+  <h3>SERVICES</h3>
 
-      <h3>LEGAL</h3>
-      <span class="item">Terms of Service</span>
-      <span class="item">Privacy Policy</span>
-    </div>
+  <a href="#">Virtual Numbers</a>
+  <a href="#">SMM Services</a>
+  <a href="#">Social Accounts</a>
+  <a href="#">Proxy</a>
+
+  <h3>SUPPORT</h3>
+
+  <a href="#">Help Center</a>
+  <a href="#">Documentation</a>
+  <a href="#">Status Page</a>
+  <a href="#">Contact Us</a>
+
+  <h3>LEGAL</h3>
+
+  <a href="#">Terms of Service</a>
+  <a href="#">Privacy Policy</a>
+  <a href="#">Cookie Policy</a>
+  <a href="#">Refund Policy</a>
+
+</div>
   </div>
 
   <!-- LOGIN PAGE -->
