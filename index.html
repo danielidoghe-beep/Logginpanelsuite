@@ -556,29 +556,24 @@ function forgotPassword(){
 let countdown = 60;
 let timer;
 
-  function sendResetCode(){
+  function sendResetLink() {
+    const email = document.getElementById("resetEmail").value.trim();
 
-    const email = document.getElementById("forgotEmail").value.trim();
-
-    if(email === ""){
-        alert("Please enter your email.");
+    if (!email) {
+        alert("Please enter your email address.");
         return;
     }
 
-    auth.sendPasswordResetEmail(email)
-    .then(() => {
-
-        alert("Password reset email sent successfully.\n\nPlease check your inbox or spam folder.");
-
-        showPage("loginPage");
-
-    })
-    .catch((error) => {
-
-        alert(error.message);
-
+    showLoadingThen(() => {
+        auth.sendPasswordResetEmail(email)
+            .then(() => {
+                alert("Password reset link has been sent to your email.");
+                showPage("loginPage");
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     });
-
 }
     function registerUser() {
       const username = document.getElementById('regUsername').value.trim();
