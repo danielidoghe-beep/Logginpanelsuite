@@ -289,6 +289,22 @@ padding-bottom:70px;
     font-size:28px;
     font-weight:700;
 }
+  .back-btn{
+    width:120px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.back-btn:hover{
+    background:#334155;
+}
   </style>
 </head>
 <body>
@@ -626,6 +642,18 @@ Fund your wallet to get started.
 </div>
 
 </div>
+<div id="servicesPage" class="page">
+
+    <button class="back-btn" onclick="showDashboard()">
+        ← Back
+    </button>
+
+    <h1>Explore All Services</h1>
+
+    <p class="services-subtitle">
+        Choose a service category below to continue into Virtual Numbers,
+        SMM Services, Social Accounts or Social Accounts 2.
+    </p>
   <!-- HAMBURGER MENU -->
   <div id="sideMenu" class="side-menu">
     <div class="menu-header">
@@ -824,7 +852,16 @@ document.getElementById("walletPage").style.display="none";
 document.getElementById("dashboardPage").style.display="block";
 
 }
-auth.onAuthStateChanged(user => {
+function showDashboard(){
+
+    document.getElementById("dashboardPage").style.display = "block";
+
+    document.getElementById("walletPage").style.display = "none";
+
+    document.getElementById("servicesPage").style.display = "none";
+
+}
+    auth.onAuthStateChanged(user => {
     if (user) {
         loadDashboard(user);
     } else {
