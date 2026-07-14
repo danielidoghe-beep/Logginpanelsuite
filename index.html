@@ -263,6 +263,32 @@ transform:scale(.9);
 body{
 padding-bottom:70px;
 }
+  .page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.back-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.back-btn:hover{
+    background:#334155;
+}
+
+.page-header h2{
+    font-size:28px;
+    font-weight:700;
+}
   </style>
 </head>
 <body>
@@ -522,7 +548,15 @@ padding-bottom:70px;
     </a>
 </nav>
 <div id="walletPage" class="container" style="display:none;">
+<div class="page-header">
 
+    <button class="back-btn" onclick="showDashboard()">
+        ←
+    </button>
+
+    <h2>My Wallet</h2>
+
+</div>
 <h1 style="font-size:36px;font-weight:800;">My Wallet</h1>
 
 <p style="color:#94a3b8;margin-bottom:25px;">
