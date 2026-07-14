@@ -520,6 +520,77 @@ padding-bottom:70px;
         <i class="fa-solid fa-user"></i>
     </a>
 </nav>
+<div id="walletPage" class="container" style="display:none;">
+
+<h1 style="font-size:36px;font-weight:800;">My Wallet</h1>
+
+<p style="color:#94a3b8;margin-bottom:25px;">
+Manage your wallet securely with clean funding and transaction tracking.
+</p>
+
+<div style="display:flex;background:#202b46;border-radius:18px;padding:6px;margin-bottom:20px;">
+<button style="flex:1;background:#6d4cff;color:white;border:none;padding:14px;border-radius:14px;font-size:18px;">Wallet</button>
+<button style="flex:1;background:transparent;color:#b6bfd5;border:none;font-size:18px;">Fund</button>
+<button style="flex:1;background:transparent;color:#b6bfd5;border:none;font-size:18px;">History</button>
+</div>
+
+<div style="background:#b87918;border-radius:25px;padding:25px;color:white;">
+
+<div style="display:flex;justify-content:space-between;">
+<h2>Wallet Balance</h2>
+<div>
+👁️ &nbsp; 🔄
+</div>
+</div>
+
+<h1 style="font-size:60px;margin-top:20px;">₦0.00</h1>
+
+<p>NGN • Updated just now</p>
+
+<button style="width:100%;margin-top:25px;background:black;color:white;padding:18px;border:none;border-radius:18px;font-size:24px;font-weight:bold;">
++ Add Funds
+</button>
+
+</div>
+
+<div style="display:flex;gap:15px;margin-top:20px;">
+
+<div style="flex:1;background:#18254a;border-radius:18px;padding:20px;">
+<p style="color:#9aa7c2;">Total Deposits</p>
+<h2>₦0.00</h2>
+</div>
+
+<div style="flex:1;background:#18254a;border-radius:18px;padding:20px;">
+<p style="color:#9aa7c2;">Total Spent</p>
+<h2 style="color:#ff7c7c;">₦0.00</h2>
+</div>
+
+</div>
+
+<div style="margin-top:35px;display:flex;justify-content:space-between;align-items:center;">
+<h2>Recent Activity</h2>
+<span style="color:#6d4cff;">View All →</span>
+</div>
+
+<p style="color:#94a3b8;">Tap a transaction to view its order</p>
+
+<div style="background:#17234b;border-radius:25px;padding:40px;margin-top:20px;text-align:center;">
+
+<div style="font-size:60px;">🕒</div>
+
+<h2>No transactions yet</h2>
+
+<p style="color:#94a3b8;">
+Fund your wallet to get started.
+</p>
+
+<button style="background:#6d4cff;color:white;padding:16px 45px;border:none;border-radius:18px;font-size:22px;margin-top:20px;">
++ Add Funds
+</button>
+
+</div>
+
+</div>
   <!-- HAMBURGER MENU -->
   <div id="sideMenu" class="side-menu">
     <div class="menu-header">
@@ -703,7 +774,21 @@ let timer;
     console.log(error);
 
 });
+function showWallet(){
 
+document.getElementById("dashboardPage").style.display="none";
+
+document.getElementById("walletPage").style.display="block";
+
+}
+
+function showDashboard(){
+
+document.getElementById("walletPage").style.display="none";
+
+document.getElementById("dashboardPage").style.display="block";
+
+}
 auth.onAuthStateChanged(user => {
     if (user) {
         loadDashboard(user);
