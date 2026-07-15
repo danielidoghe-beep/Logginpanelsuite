@@ -537,7 +537,7 @@ padding-bottom:70px;
       <div class="bell">🔔</div>
       <h3>All caught up!</h3>
       <p>No recent activity to show</p>
-    </div>
+    
 </div>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
@@ -755,7 +755,13 @@ let timer;
     showLoadingThen(() => {
         auth.sendPasswordResetEmail(email)
             .then(() => {
-                alert("Password reset link has been sent to your email.");
+                alert(
+"Password reset link has been sent successfully.\n\n" +
+"Please check your Inbox.\n\n" +
+"If you don't see it, check your Spam/Junk folder.\n\n" +
+"If you find the email in Spam, tap 'Not Spam' or 'Move to Inbox' so future emails from LogginSuite will arrive in your Inbox.\n\n" +
+"Then open the email and tap the Reset Password link."
+);
                 showPage("loginPage");
             })
             .catch((error) => {
